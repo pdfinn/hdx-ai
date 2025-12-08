@@ -40,6 +40,7 @@ Research on responsible AI product development including:
 Curriculum and research materials for executive MBA programs:
 - Introduction to GenAI: Data and Project Management (1 hour)
 - Introduction to GenAI: Ethics, Security, and Implementation (2 hours)
+- **Research Gaps Supplement 2025**: Updated research covering China/APAC regulations, IP/copyright, agentic AI governance, ROI frameworks, vendor evaluation, board communications, ESG considerations, talent strategy, and industry case studies
 - Strategic frameworks for executive decision-making
 - Case studies and discussion questions
 
@@ -59,7 +60,9 @@ ai-ethics-security/
 └── executive-education/         # Executive MBA curriculum
     ├── README.md
     ├── module-1-genai-data-project-management.md
-    └── module-2-genai-ethics-security-implementation.md
+    ├── module-2-genai-ethics-security-implementation.md
+    ├── background-research-compendium.md
+    └── research-gaps-supplement-2025.md
 ```
 
 ## Research Methodology
@@ -85,4 +88,4 @@ When adding new research to this directory:
 
 ---
 
-*Last Updated: December 2024*
+*Last Updated: December 2025*
