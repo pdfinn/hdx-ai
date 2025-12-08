@@ -1,0 +1,20 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Generated PDF output (uncomment if you want to track PDFs)
+# *.pdf
+
+# OS files
+.DS_Store
+
+# Editor/tool config
+.claude/

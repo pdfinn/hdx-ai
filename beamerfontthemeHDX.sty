@@ -1,0 +1,74 @@
+% beamerfontthemeHDX.sty
+% Font theme for Happy Digital X (HDX) Beamer presentations
+%
+% Requires XeLaTeX or LuaLaTeX for fontspec
+% Primary font: Poppins (install from Google Fonts if not available)
+% Fallback: Helvetica Neue (built into macOS)
+
+\mode<presentation>
+
+\RequirePackage{fontspec}
+\RequirePackage{ifthen}
+
+% Try to use Poppins, fall back to Helvetica Neue
+% User can install Poppins from: https://fonts.google.com/specimen/Poppins
+\IfFontExistsTF{Poppins}{%
+    \setsansfont{Poppins}[
+        UprightFont = *-Regular,
+        BoldFont = *-Bold,
+        ItalicFont = *-Italic,
+        BoldItalicFont = *-BoldItalic
+    ]
+    \newfontfamily\hdxtitlefont{Poppins}[
+        UprightFont = *-Bold,
+        BoldFont = *-Bold
+    ]
+    \newfontfamily\hdxbodyfont{Poppins}[
+        UprightFont = *-Regular,
+        BoldFont = *-SemiBold
+    ]
+}{%
+    % Fallback to Helvetica Neue (macOS built-in)
+    \setsansfont{Helvetica Neue}[
+        UprightFont = *,
+        BoldFont = * Bold,
+        ItalicFont = * Italic,
+        BoldItalicFont = * Bold Italic
+    ]
+    \newfontfamily\hdxtitlefont{Helvetica Neue Bold}
+    \newfontfamily\hdxbodyfont{Helvetica Neue}
+    \PackageWarning{beamerfontthemeHDX}{Poppins font not found, using Helvetica Neue. Install Poppins from Google Fonts for exact match.}
+}
+
+% Use sans-serif throughout
+\renewcommand{\familydefault}{\sfdefault}
+
+% Title page fonts
+\setbeamerfont{title}{size=\Huge, series=\bfseries}
+\setbeamerfont{subtitle}{size=\Large, series=\bfseries}
+\setbeamerfont{author}{size=\large, series=\bfseries}
+\setbeamerfont{institute}{size=\normalsize, series=\bfseries}
+\setbeamerfont{date}{size=\normalsize}
+
+% Frame title fonts
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\normalsize, series=\bfseries}
+
+% Block fonts
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{block body}{size=\small}
+
+% Item fonts
+\setbeamerfont{item}{series=\normalfont}
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\small}
+
+% Section fonts
+\setbeamerfont{section title}{size=\huge, series=\bfseries}
+\setbeamerfont{section in toc}{series=\bfseries}
+
+% Caption
+\setbeamerfont{caption}{size=\small}
+\setbeamerfont{caption name}{series=\bfseries}
+
+\mode<all>

@@ -1,0 +1,150 @@
+% beamerouterthemeHDX.sty
+% Outer theme for Happy Digital X (HDX) Beamer presentations
+%
+% Handles: frame title, headline, footline, margins
+
+\mode<presentation>
+
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+
+%% ============================================================================
+%% PAGE GEOMETRY
+%% ============================================================================
+
+% Set margins
+\setbeamersize{
+    text margin left=10mm,
+    text margin right=10mm
+}
+
+%% ============================================================================
+%% FRAME TITLE
+%% ============================================================================
+
+\defbeamertemplate*{frametitle}{HDX}{%
+    \nointerlineskip%
+    \begin{beamercolorbox}[
+        wd=\paperwidth,
+        ht=15mm,
+        dp=2mm,
+        leftskip=10mm,
+        rightskip=10mm
+    ]{frametitle}%
+        \vbox to 15mm{%
+            \vfil%
+            \usebeamerfont{frametitle}\insertframetitle%
+            \ifx\insertframesubtitle\@empty\else%
+                \\[1mm]%
+                \usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle%
+            \fi%
+            \vfil%
+        }%
+    \end{beamercolorbox}%
+    % Purple accent bar under title
+    \nointerlineskip%
+    \begin{beamercolorbox}[
+        wd=0.3\paperwidth,
+        ht=2pt,
+        dp=0pt,
+        leftskip=10mm
+    ]{separator line}%
+    \end{beamercolorbox}%
+    \vspace{3mm}%
+}
+
+%% ============================================================================
+%% HEADLINE (empty for most slides)
+%% ============================================================================
+
+\defbeamertemplate*{headline}{HDX}{%
+    % Empty headline - logos are placed manually on title page
+}
+
+%% ============================================================================
+%% FOOTLINE
+%% ============================================================================
+
+\defbeamertemplate*{footline}{HDX}{%
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[
+            wd=\paperwidth,
+            ht=5mm,
+            dp=2mm,
+            leftskip=10mm,
+            rightskip=10mm
+        ]{footline}%
+            % Left: empty or short title
+            % Right: page number
+            \hfill%
+            {\usebeamercolor[fg]{footline}\insertframenumber}%
+        \end{beamercolorbox}%
+    }%
+    \vskip0pt%
+}
+
+% No footline on title page
+\defbeamertemplate{footline}{HDX plain}{}
+
+%% ============================================================================
+%% BACKGROUND
+%% ============================================================================
+
+% Default background: solid beige color
+\defbeamertemplate*{background}{HDX}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[hdxbg] (current page.south west) rectangle (current page.north east);
+    \end{tikzpicture}%
+}
+
+% Purple background variant (for content slides with purple bg)
+\defbeamertemplate{background}{HDX purple}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[hdxpurple] (current page.south west) rectangle (current page.north east);
+    \end{tikzpicture}%
+}
+
+% Background with decorative elements (dots + wavy lines)
+\defbeamertemplate{background}{HDX decorated}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[hdxbg] (current page.south west) rectangle (current page.north east);
+        % Dots top-right
+        \node[anchor=north east, opacity=0.6] at ([xshift=-5mm, yshift=-5mm]current page.north east) {%
+            \includegraphics[width=20mm]{\hdxassetpath dots-pattern.png}%
+        };
+        % Wavy lines bottom-left
+        \node[anchor=south west, opacity=0.8] at ([xshift=-10mm, yshift=-10mm]current page.south west) {%
+            \includegraphics[height=40mm]{\hdxassetpath wavy-lines.png}%
+        };
+    \end{tikzpicture}%
+}
+
+%% ============================================================================
+%% FRAME OPTIONS
+%% ============================================================================
+
+% Command to switch to purple background for a frame
+\newcommand{\hdxpurplebg}{%
+    \setbeamertemplate{background}[HDX purple]%
+    \setbeamercolor{normal text}{fg=hdxwhite}%
+    \setbeamercolor{frametitle}{fg=hdxwhite}%
+    \setbeamercolor{item}{fg=hdxwhite}%
+    \usebeamercolor[fg]{normal text}%
+}
+
+% Command to use decorated background
+\newcommand{\hdxdecoratedbg}{%
+    \setbeamertemplate{background}[HDX decorated]%
+}
+
+% Command to reset to default background
+\newcommand{\hdxdefaultbg}{%
+    \setbeamertemplate{background}[HDX]%
+    \setbeamercolor{normal text}{fg=hdxdarktext, bg=hdxbg}%
+    \setbeamercolor{frametitle}{fg=hdxdarktext}%
+    \setbeamercolor{item}{fg=hdxpurple}%
+    \usebeamercolor[fg]{normal text}%
+}
+
+\mode<all>

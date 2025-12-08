@@ -1,0 +1,332 @@
+% hdx-ai.tex
+% AI Ethics, Security, and Product Development Presentation
+%
+% Compile with: xelatex hdx-ai.tex
+%
+% Make sure to have the HDX theme files in the same directory:
+%   beamerthemeHDX.sty, beamercolorthemeHDX.sty, beamerfontthemeHDX.sty
+%   beamerinnerthemeHDX.sty, beamerouterthemeHDX.sty
+%
+% And the assets folder with:
+%   hdx-logo-full.png, tsinghua-logos.png, dots-pattern.png, wavy-lines.png
+
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{HDX}
+
+% Presentation metadata
+\title{AI: Ethics, Security \& Product Development}
+\author{Happy Digital X}
+\institute{Happy Digital X | Tsinghua University}
+\date{\today}
+
+\begin{document}
+
+%% ============================================================================
+%% TITLE SLIDE
+%% ============================================================================
+
+\begin{frame}[plain, noframenumbering]
+    \titlepage
+\end{frame}
+
+%% ============================================================================
+%% TABLE OF CONTENTS / AGENDA
+%% ============================================================================
+
+\begin{frame}{Today's Agenda}
+    \hdxtopicitem{1}{AI Ethics}{Responsible AI frameworks, bias mitigation, and governance}
+
+    \hdxtopicitem{2}{Data Governance}{Privacy, compliance, and data management}
+
+    \hdxtopicitem{3}{AI Security}{Protecting AI systems from threats and vulnerabilities}
+
+    \hdxtopicitem{4}{Product Development}{Building responsible AI products}
+\end{frame}
+
+%% ============================================================================
+%% SECTION 1: AI ETHICS
+%% ============================================================================
+
+\section{AI Ethics}
+
+\begin{frame}{Why AI Ethics Matters}
+    \begin{itemize}
+        \item AI systems increasingly impact critical decisions
+        \item Potential for unintended harm at scale
+        \item Growing regulatory requirements worldwide
+        \item Public trust depends on responsible development
+    \end{itemize}
+
+    \vspace{5mm}
+
+    \begin{block}{Key Principle}
+        AI should augment human capabilities while preserving human agency and dignity.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Responsible AI Framework}
+    \hdxtwocolumn{
+        \textbf{Core Principles}
+
+        \begin{itemize}
+            \item Fairness \& Non-discrimination
+            \item Transparency \& Explainability
+            \item Privacy \& Security
+            \item Accountability
+            \item Human Oversight
+        \end{itemize}
+    }{
+        \textbf{Implementation}
+
+        \begin{enumerate}
+            \item Ethics review boards
+            \item Impact assessments
+            \item Bias testing
+            \item Stakeholder engagement
+            \item Continuous monitoring
+        \end{enumerate}
+    }
+\end{frame}
+
+\begin{frame}{Bias Detection \& Mitigation}
+    \begin{enumerate}
+        \item \textbf{Pre-processing}\\
+              Address bias in training data before model development
+        \item \textbf{In-processing}\\
+              Apply fairness constraints during model training
+        \item \textbf{Post-processing}\\
+              Adjust outputs to ensure equitable outcomes
+    \end{enumerate}
+
+    \vspace{5mm}
+
+    \begin{alertblock}{Critical Consideration}
+        Bias can emerge at any stage---data collection, model design, or deployment.
+    \end{alertblock}
+\end{frame}
+
+%% ============================================================================
+%% SECTION 2: DATA GOVERNANCE
+%% ============================================================================
+
+\section{Data Governance}
+
+\begin{frame}{Data Privacy Landscape}
+    \begin{itemize}
+        \item \textbf{GDPR} (EU) --- Comprehensive data protection
+        \item \textbf{CCPA/CPRA} (California) --- Consumer privacy rights
+        \item \textbf{PIPL} (China) --- Personal information protection
+        \item \textbf{Emerging regulations} --- Global trend toward stricter controls
+    \end{itemize}
+
+    \vspace{5mm}
+
+    \begin{block}{Compliance Imperative}
+        Organizations must design AI systems with privacy by default and by design.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Data Governance Framework}
+    \hdxtwocolumn{
+        \textbf{Key Components}
+
+        \begin{itemize}
+            \item Data inventory \& classification
+            \item Access controls
+            \item Consent management
+            \item Retention policies
+            \item Audit trails
+        \end{itemize}
+    }{
+        \textbf{Best Practices}
+
+        \begin{enumerate}
+            \item Minimize data collection
+            \item Purpose limitation
+            \item Data quality assurance
+            \item Regular compliance audits
+            \item Incident response plans
+        \end{enumerate}
+    }
+\end{frame}
+
+%% ============================================================================
+%% PURPLE BACKGROUND SLIDE
+%% ============================================================================
+
+{
+\hdxpurplebg
+\begin{frame}{The Data Imperative}
+    \centering
+    \vspace{10mm}
+
+    {\Large\bfseries
+    ``Data is the foundation of AI.\\[3mm]
+    How we govern it determines\\[3mm]
+    whether AI serves humanity.''}
+
+    \vspace{10mm}
+
+    --- Happy Digital X
+\end{frame}
+}
+
+%% ============================================================================
+%% SECTION 3: AI SECURITY
+%% ============================================================================
+
+\section{AI Security}
+
+\begin{frame}{AI Security Threats}
+    \begin{itemize}
+        \item \textbf{Adversarial Attacks} --- Manipulating inputs to fool models
+        \item \textbf{Data Poisoning} --- Corrupting training data
+        \item \textbf{Model Extraction} --- Stealing proprietary models
+        \item \textbf{Prompt Injection} --- Exploiting LLM vulnerabilities
+        \item \textbf{Supply Chain Attacks} --- Compromising ML pipelines
+    \end{itemize}
+
+    \vspace{5mm}
+
+    \begin{alertblock}{Emerging Risk}
+        AI systems face unique attack vectors that traditional security doesn't address.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Security Framework}
+    \hdxtwocolumn{
+        \textbf{Protection Measures}
+
+        \begin{itemize}
+            \item Input validation
+            \item Model hardening
+            \item Access controls
+            \item Encryption (at rest \& transit)
+            \item Monitoring \& logging
+        \end{itemize}
+    }{
+        \textbf{Compliance Standards}
+
+        \begin{enumerate}
+            \item SOC 2 Type II
+            \item ISO 27001
+            \item FedRAMP
+            \item NIST AI RMF
+            \item Industry-specific regs
+        \end{enumerate}
+    }
+\end{frame}
+
+\begin{frame}{Secure AI Development Lifecycle}
+    \begin{enumerate}
+        \item \textbf{Design Phase}\\
+              Threat modeling, security requirements
+        \item \textbf{Development Phase}\\
+              Secure coding, dependency scanning
+        \item \textbf{Testing Phase}\\
+              Adversarial testing, red teaming
+        \item \textbf{Deployment Phase}\\
+              Secure configuration, monitoring
+        \item \textbf{Operations Phase}\\
+              Incident response, continuous assessment
+    \end{enumerate}
+\end{frame}
+
+%% ============================================================================
+%% SECTION 4: PRODUCT DEVELOPMENT
+%% ============================================================================
+
+\section{Product Development}
+
+\begin{frame}{Responsible AI Product Lifecycle}
+    \begin{enumerate}
+        \item \textbf{Discovery}\\
+              Problem definition, stakeholder analysis, risk assessment
+        \item \textbf{Design}\\
+              User-centered design, ethical considerations
+        \item \textbf{Development}\\
+              Agile practices, testing, documentation
+        \item \textbf{Deployment}\\
+              Phased rollout, monitoring, feedback loops
+        \item \textbf{Maintenance}\\
+              Model updates, performance tracking, sunset planning
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Risk Assessment Framework}
+    \hdxtwocolumn{
+        \textbf{Risk Categories}
+
+        \begin{itemize}
+            \item Technical risks
+            \item Ethical risks
+            \item Legal/regulatory risks
+            \item Reputational risks
+            \item Operational risks
+        \end{itemize}
+    }{
+        \textbf{Mitigation Strategies}
+
+        \begin{enumerate}
+            \item Early identification
+            \item Cross-functional review
+            \item Documentation
+            \item Contingency planning
+            \item Regular reassessment
+        \end{enumerate}
+    }
+\end{frame}
+
+\begin{frame}{Human-AI Interaction Design}
+    \begin{itemize}
+        \item Appropriate trust calibration
+        \item Clear AI capabilities and limitations
+        \item Meaningful human oversight
+        \item Graceful degradation
+        \item Accessible design principles
+    \end{itemize}
+
+    \vspace{5mm}
+
+    \begin{block}{Design Philosophy}
+        AI should enhance human decision-making, not replace human judgment.
+    \end{block}
+\end{frame}
+
+%% ============================================================================
+%% KEY TAKEAWAYS
+%% ============================================================================
+
+{
+\hdxpurplebg
+\begin{frame}{Key Takeaways}
+    \centering
+    \vspace{5mm}
+
+    {\Large\bfseries Key Takeaways}
+
+    \vspace{10mm}
+
+    \begin{minipage}{0.8\textwidth}
+        \begin{enumerate}
+            \item \textbf{Ethics First} --- Embed ethical considerations from day one
+            \item \textbf{Data Matters} --- Robust governance enables trustworthy AI
+            \item \textbf{Security is Essential} --- Protect AI systems proactively
+            \item \textbf{Build Responsibly} --- Human-centered product development
+        \end{enumerate}
+    \end{minipage}
+\end{frame}
+}
+
+%% ============================================================================
+%% THANK YOU SLIDE
+%% ============================================================================
+
+\hdxthankyou
+    {www.hdx.edu}
+    {info@hdx.edu}
+    {@HappyDigitalX}
+    {Questions? Let's discuss!}
+
+\end{document}
