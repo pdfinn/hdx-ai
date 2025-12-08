@@ -19,7 +19,8 @@ A comprehensive two-module course designed for executive MBA programs, covering 
 
 | Document | Description |
 |----------|-------------|
-| [Background Research Compendium](./background-research-compendium.md) | Comprehensive sourced research from 2024-2025 covering frameworks, regulations, security, governance, and case studies |
+| [Background Research Compendium](./background-research-compendium.md) | Foundation research from 2024 covering frameworks, regulations, security, governance, and case studies |
+| [Research Gaps Supplement 2025](./research-gaps-supplement-2025.md) | **NEW** Updated December 2025 research addressing identified gaps: China/APAC regulations, IP/copyright, agentic AI, ROI frameworks, vendor evaluation, board governance, ESG, talent strategy, and industry case studies |
 
 ---
 
@@ -122,4 +123,4 @@ These materials are designed as background research and can be adapted for:
 
 ---
 
-*Last Updated: December 2024*
+*Last Updated: December 2025*
