@@ -1,0 +1,547 @@
+% hdx-ai-part1.tex
+% Introduction to GenAI Part 1: Data and Project Management (1 hour)
+%
+% Compile with: xelatex hdx-ai-part1.tex (run twice for TOC)
+%
+% HDX Beamer Theme - Happy Digital X | Tsinghua University
+
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{HDX}
+
+% Additional packages
+\usepackage{pifont}  % For \ding symbols (checkboxes, etc.)
+\usepackage{tikz}    % For diagrams
+\usetikzlibrary{shapes,arrows,positioning,fit,calc,decorations.pathreplacing}
+
+% Presentation metadata
+\title{Introduction to GenAI}
+\subtitle{Part 1: Data and Project Management}
+\author{Happy Digital X}
+\institute{Happy Digital X | Tsinghua University}
+\date{\today}
+
+\begin{document}
+
+%% ============================================================================
+%% TITLE SLIDE
+%% ============================================================================
+
+\begin{frame}[plain, noframenumbering]
+    \titlepage
+\end{frame}
+
+%% ============================================================================
+%% TABLE OF CONTENTS / AGENDA
+%% ============================================================================
+
+\begin{frame}{Today's Agenda}
+    \hdxtopicitem{1}{Data Governance}{Privacy regulations and data management}
+
+    \hdxtopicitem{2}{Product Development}{Lifecycle, deployment, and ROI}
+
+    \vspace{5mm}
+
+    {\small\textit{Duration: 1 hour}}
+\end{frame}
+
+%% ============================================================================
+%% SECTION 1: DATA GOVERNANCE
+%% ============================================================================
+
+\section{Data Governance}
+
+{
+\hdxpurplebg
+\begin{frame}{The Data Imperative}
+    \centering
+    \vspace{10mm}
+
+    {\Large\bfseries
+    ``Organizations don't have AI problems;\\[3mm]
+    they have data problems that AI exposes.''}
+
+    \vspace{10mm}
+
+    Plan for 60--80\% of GenAI project time\\to be spent on data preparation.
+\end{frame}
+}
+
+\begin{frame}{Data Strategy Precedes AI Strategy}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{The Data Hierarchy of Needs:}
+
+            \vspace{3mm}
+
+            \begin{enumerate}
+                \item \textbf{Data Collection} --- Foundation
+
+                \item \textbf{Clean Data} --- Must start here
+
+                \item \textbf{Analytics \& Reporting}
+
+                \item \textbf{AI/ML} --- Most start here (mistake)
+            \end{enumerate}
+
+            \vspace{3mm}
+
+            \begin{alertblock}{Reality Check}
+                Fortune 500 expected 4 months for GenAI. Actual: 15 months. Root cause: Data readiness.
+            \end{alertblock}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{assets/stock/data-server.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Data Requirements for GenAI}
+    \begin{itemize}
+        \item \textbf{Training Data}: Building/fine-tuning models\\
+              \textit{Strategic value: Competitive moat}
+
+        \item \textbf{Context Data (RAG)}: Grounding model outputs\\
+              \textit{Strategic value: Accuracy \& relevance}
+
+        \item \textbf{Operational Data}: Real-time model inputs\\
+              \textit{Strategic value: Timeliness}
+    \end{itemize}
+
+    \vspace{5mm}
+
+    \textbf{Quality Dimensions}: Accuracy, Completeness, Consistency, Timeliness, Representativeness
+\end{frame}
+
+\begin{frame}{Global Privacy Regulations}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item \textbf{GDPR} (EU): Up to 4\% global revenue
+
+                \item \textbf{CCPA/CPRA} (California): Per-violation penalties
+
+                \item \textbf{PIPL} (China): Up to 5\% revenue
+
+                \item \textbf{LGPD} (Brazil): Up to 2\% revenue
+
+                \item \textbf{POPIA} (South Africa): Up to 10M ZAR
+            \end{itemize}
+
+            \vspace{3mm}
+
+            \begin{block}{Global Trend}
+                Design AI systems with privacy by default.
+            \end{block}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{assets/stock/privacy-data.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{GenAI-Specific Privacy Concerns}
+    \begin{enumerate}
+        \item \textbf{Training Data Privacy}: Was personal data used with consent?
+
+        \item \textbf{Inference Privacy}: Can model be manipulated to reveal data?
+
+        \item \textbf{Output Privacy}: Do outputs contain personal information?
+
+        \item \textbf{Conversation Privacy}: Who accesses user interactions?
+
+        \item \textbf{Derived Data}: Are new personal insights generated?
+    \end{enumerate}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{The Consent Challenge}
+        Traditional consent breaks down: capabilities hard to explain, data use unpredictable, untraining technically difficult.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Data Governance Framework}
+    \hdxtwocolumn{
+        \textbf{Key Components}
+        \begin{itemize}
+            \item Data inventory \& classification
+            \item Access controls
+            \item Consent management
+            \item Retention policies
+            \item Audit trails
+        \end{itemize}
+    }{
+        \textbf{Best Practices}
+        \begin{itemize}
+            \item Minimize data collection
+            \item Purpose limitation
+            \item Regular compliance audits
+            \item Incident response plans
+            \item Cross-border controls
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{User Rights to Support}
+    \begin{itemize}
+        \item \textbf{Right to Access}: Users request all data held about them
+
+        \item \textbf{Right to Erasure}: Users request deletion
+
+        \item \textbf{Right to Portability}: Data in machine-readable format
+
+        \item \textbf{Right to Rectification}: Correct inaccurate data
+
+        \item \textbf{Right to Object}: Object to certain processing
+
+        \item \textbf{Automated Decision Rights}: Human review of AI decisions
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{China's AI Regulatory Framework}
+    \textbf{The world's most comprehensive AI regulations:}
+
+    \vspace{3mm}
+
+    \begin{itemize}
+        \item \textbf{Algorithm Recommendations} (2022): Internet services
+
+        \item \textbf{Deep Synthesis} (2023): Deepfakes, synthetic media
+
+        \item \textbf{GenAI Service Measures} (2023): All public GenAI
+
+        \item \textbf{AIGC Labeling} (Sept 2025): Mandatory AI content labels
+
+        \item \textbf{National Standards} (Nov 2025): Security \& governance
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \textbf{Scale}: 350+ LLMs filed. 1.57M AI patents (38.6\% of global total).
+\end{frame}
+
+%% ============================================================================
+%% SECTION 2: PRODUCT DEVELOPMENT
+%% ============================================================================
+
+\section{Product Development}
+
+{
+\hdxpurplebg
+\begin{frame}{The GenAI Development Reality}
+    \centering
+    \vspace{5mm}
+
+    {\Large\bfseries Key Statistics (2025)}
+
+    \vspace{8mm}
+
+    \begin{minipage}{0.85\textwidth}
+        \begin{itemize}
+            \item Only \textbf{5\%} of AI pilots achieve rapid revenue acceleration
+            \item \textbf{67\%} success rate for purchasing/partnering
+            \item \textbf{22\%} success rate for internal builds
+            \item \textbf{46\%} have no structured ROI measurement
+        \end{itemize}
+    \end{minipage}
+
+    \vspace{8mm}
+
+    GenAI has entered the ``Trough of Disillusionment''
+\end{frame}
+}
+
+\begin{frame}{Why Traditional Project Management Fails}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \hdxtwocolumn{
+                \textbf{Traditional}
+                \begin{itemize}
+                    \item Fixed requirements
+                    \item Binary success
+                    \item Predictable timeline
+                    \item Deterministic testing
+                \end{itemize}
+            }{
+                \textbf{GenAI}
+                \begin{itemize}
+                    \item Emergent requirements
+                    \item Probabilistic success
+                    \item Uncertain timeline
+                    \item Statistical testing
+                \end{itemize}
+            }
+
+            \vspace{2mm}
+
+            \begin{alertblock}{Implication}
+                Waterfall always fails. Agile is better but insufficient.
+            \end{alertblock}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{assets/stock/team-collaboration.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{The AI Project Lifecycle}
+    \begin{enumerate}
+        \item \textbf{Problem Framing} (Often Skipped): Should AI solve this?
+
+        \item \textbf{Data Assessment}: Inventory, gaps, quality
+
+        \item \textbf{Proof of Concept} (4--8 weeks): Time-boxed experimentation
+
+        \item \textbf{Pilot}: Limited production, controlled blast radius
+
+        \item \textbf{Production \& Scale}: Infrastructure, monitoring
+
+        \item \textbf{Operations}: Performance monitoring, retraining
+    \end{enumerate}
+
+    \vspace{3mm}
+
+    \begin{block}{Rule of Thumb}
+        Budget for 2--3 PoCs failing for every success.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Phase Gates for GenAI}
+    \begin{itemize}
+        \item \textbf{Gate 0}: Business case, feasibility, ethics screening
+
+        \item \textbf{Gate 1}: Requirements, data availability, build vs. buy
+
+        \item \textbf{Gate 2}: Technical validation, benchmarks, user feedback
+
+        \item \textbf{Gate 3}: Production-grade, security \& ethics review
+
+        \item \textbf{Gate 4}: Controlled deployment, monitoring setup
+
+        \item \textbf{Gate 5}: Full deployment, continuous improvement
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Kill Criteria: Define Before Starting}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \begin{itemize}
+                \item \textbf{Technical}: Can't achieve accuracy threshold
+
+                \item \textbf{Economic}: Cost exceeds value
+
+                \item \textbf{Timeline}: 6-month delay, no path forward
+
+                \item \textbf{Ethical}: Can't mitigate bias
+
+                \item \textbf{Security}: Can't protect data
+
+                \item \textbf{Regulatory}: Unacceptable compliance risk
+
+                \item \textbf{Strategic}: Market opportunity gone
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \includegraphics[width=\textwidth]{assets/stock/strategy-chess.jpg}
+        \end{column}
+    \end{columns}
+
+    \vspace{2mm}
+
+    \begin{alertblock}{Imperative}
+        Establish kill criteria before emotional investment.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Implementation Patterns}
+    \begin{enumerate}
+        \item \textbf{Co-Pilot / Augmentation}\\
+              AI assists; humans decide. \textit{Best for: High-stakes, building trust}
+
+        \item \textbf{Automation with Exceptions}\\
+              AI handles routine; humans handle exceptions. \textit{Best for: High-volume}
+
+        \item \textbf{Full Automation}\\
+              AI autonomous with monitoring. \textit{Best for: Low-stakes, speed critical}
+
+        \item \textbf{Internal Tool}\\
+              AI assists employees only. \textit{Best for: Building capability, lower risk}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Build vs. Buy Decision}
+    \begin{itemize}
+        \item \textbf{Build from Scratch}: \$10M--\$100M+; 12--24 months\\
+              \textit{Only if: Massive data advantage}
+
+        \item \textbf{Fine-Tune}: \$10K--\$1M; weeks to months\\
+              \textit{Best for: Domain-specific tasks}
+
+        \item \textbf{RAG}: \$10K--\$100K; weeks\\
+              \textit{Best for: Current/proprietary information}
+
+        \item \textbf{Prompt Engineering}: \$1K--\$10K; days to weeks\\
+              \textit{Best for: Quick wins}
+
+        \item \textbf{Buy SaaS}: Variable; days\\
+              \textit{Best for: Non-differentiating capabilities}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Success Metrics}
+    \textbf{Avoid Vanity Metrics:}
+    \begin{itemize}
+        \item[\ding{55}] ``We deployed an AI model''
+        \item[\ding{55}] ``95\% accuracy'' (on what?)
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \textbf{Focus on Business Outcomes:}
+    \begin{itemize}
+        \item[\ding{51}] Customer satisfaction improved by X\%
+        \item[\ding{51}] Time to resolution decreased by Y hours
+        \item[\ding{51}] Cost per transaction reduced by \$Z
+        \item[\ding{51}] Employee time redirected to higher-value work
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Four-Layer Monitoring Framework}
+    \begin{enumerate}
+        \item \textbf{Infrastructure}: Latency, error rates, throughput, cost
+
+        \item \textbf{Model Performance}: Accuracy, hallucination rate, drift
+
+        \item \textbf{Business}: Adoption, task completion, satisfaction, revenue
+
+        \item \textbf{Risk}: Incidents, near-misses, compliance, complaints
+    \end{enumerate}
+
+    \vspace{3mm}
+
+    \begin{block}{Principle}
+        You can't improve what you don't measure. Monitor from day one.
+    \end{block}
+\end{frame}
+
+\begin{frame}{ROI Reality (2025)}
+    \begin{itemize}
+        \item Average ROI: \textbf{3.7x} per dollar (IDC/Microsoft)
+        \item Top performers: \textbf{\$10.3} return per dollar
+        \item 74\% meeting or exceeding expectations (Deloitte)
+        \item \textbf{46\% have no structured ROI measurement}
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \textbf{Timeline Expectations:}
+    \begin{itemize}
+        \item Chatbots, RPA: 6--12 months
+        \item Operational efficiency: 12--24 months
+        \item Revenue generation: 18--36 months
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Total Cost of Ownership}
+    \hdxtwocolumn{
+        \textbf{Initial Costs}
+        \begin{itemize}
+            \item Infrastructure (GPUs)
+            \item Software licenses
+            \item Integration
+            \item Data preparation
+            \item Training
+        \end{itemize}
+    }{
+        \textbf{Ongoing Costs}
+        \begin{itemize}
+            \item Compute resources
+            \item API fees
+            \item Model maintenance
+            \item Monitoring
+            \item Personnel
+        \end{itemize}
+    }
+
+    \vspace{3mm}
+
+    \textbf{Hidden Costs}: Compliance, legal/IP, incidents, technical debt, failed pilots
+\end{frame}
+
+\begin{frame}{Minimum Viable AI Team}
+    \begin{itemize}
+        \item \textbf{Executive Sponsor} (10--20\%): Alignment, resources, blockers
+
+        \item \textbf{Product Owner} (Full-time): Requirements, prioritization
+
+        \item \textbf{Data Engineer} (Full-time): Pipelines, quality
+
+        \item \textbf{ML Engineer} (Full-time): Model development
+
+        \item \textbf{Domain Expert} (25--50\%): Business logic, validation
+
+        \item \textbf{MLOps Engineer}: Deployment, monitoring
+    \end{itemize}
+\end{frame}
+
+%% ============================================================================
+%% KEY TAKEAWAYS
+%% ============================================================================
+
+{
+\hdxpurplebg
+\begin{frame}{Part 1 Key Takeaways}
+    \centering
+    \vspace{5mm}
+
+    {\Large\bfseries Summary}
+
+    \vspace{8mm}
+
+    \begin{minipage}{0.9\textwidth}
+        \begin{enumerate}
+            \item \textbf{Data First}: 60--80\% of GenAI time is data preparation
+
+            \item \textbf{Privacy by Design}: Global regulations require it
+
+            \item \textbf{Expect Failure}: Budget for 2--3 PoCs failing per success
+
+            \item \textbf{Define Kill Criteria}: Before emotional investment
+
+            \item \textbf{Measure Everything}: Connect to business outcomes
+
+            \item \textbf{Build the Right Team}: Minimum viable AI team
+        \end{enumerate}
+    \end{minipage}
+\end{frame}
+}
+
+\begin{frame}{Discussion Questions}
+    \begin{enumerate}
+        \item What is the current state of data readiness in your organization?
+
+        \vspace{4mm}
+
+        \item Have you defined clear kill criteria for your AI projects?
+
+        \vspace{4mm}
+
+        \item How are you measuring ROI on AI investments today?
+
+        \vspace{4mm}
+
+        \item Do you have the right team composition for AI success?
+    \end{enumerate}
+\end{frame}
+
+%% ============================================================================
+%% THANK YOU SLIDE
+%% ============================================================================
+
+\hdxthankyou
+    {www.hdx.edu}
+    {info@hdx.edu}
+    {@HappyDigitalX}
+    {Continue to Part 2: Ethics, Security \& Implementation}
+
+\end{document}
