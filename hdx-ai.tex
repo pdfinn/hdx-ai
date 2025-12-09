@@ -464,24 +464,28 @@
 \begin{frame}{The OT Security Tetrad: Adding Safety}
     \centering
 
-    \begin{tikzpicture}[scale=0.55]
+    \begin{tikzpicture}[scale=0.5]
         \definecolor{hdxpurple}{RGB}{102,51,153}
         \definecolor{hdxgreen}{RGB}{107,142,35}
 
-        % Diamond arrangement - more compact
+        % Calculate spacing to prevent overlap
+        % With minimum size=2.2cm and scale=0.5, effective radius ~0.55cm
+        % Need separation > 2*radius = 1.1cm scaled, so use 3.5 units at scale 0.5
+
+        % Diamond arrangement with proper spacing
         % Top - Confidentiality
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.5cm, font=\small\bfseries] (conf) at (0,2.5) {Confidentiality};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (conf) at (0,3.5) {Confidentiality};
 
         % Left - Integrity
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.5cm, font=\small\bfseries] (int) at (-3,0) {Integrity};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (int) at (-3.5,0) {Integrity};
 
         % Right - Availability
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.5cm, font=\small\bfseries] (avail) at (3,0) {Availability};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (avail) at (3.5,0) {Availability};
 
         % Bottom - Safety (highlighted)
-        \node[circle, fill=hdxgreen, text=white, minimum size=2.5cm, font=\small\bfseries] (safe) at (0,-2.5) {Safety};
+        \node[circle, fill=hdxgreen, text=white, minimum size=2.2cm, font=\small\bfseries] (safe) at (0,-3.5) {Safety};
 
-        % Connecting lines
+        % Connecting lines (drawn behind nodes)
         \draw[thick, hdxpurple] (conf) -- (int);
         \draw[thick, hdxpurple] (conf) -- (avail);
         \draw[thick, hdxpurple] (int) -- (avail);
@@ -630,28 +634,37 @@
         \definecolor{hdxgreen}{RGB}{107,142,35}
         \definecolor{hdxblue}{RGB}{135,170,200}
 
-        % User silhouette - proper head and shoulders
-        \begin{scope}[shift={(-5.5,0)}]
-            % Head
-            \fill[gray!50] (0,0.6) circle (0.5);
-            % Shoulders/body (half ellipse)
-            \fill[gray!50] (-0.7,-0.6) arc (180:360:0.7 and 0.5) -- cycle;
+        % User silhouette - head and shoulders profile
+        \begin{scope}[shift={(-5,0)}]
+            % Head (circle)
+            \fill[gray!45] (0,0.5) circle (0.45);
+            % Neck
+            \fill[gray!45] (-0.15,-0.05) rectangle (0.15,0.15);
+            % Shoulders (rounded rectangle shape)
+            \fill[gray!45, rounded corners=3pt] (-0.7,-0.7) rectangle (0.7,-0.05);
         \end{scope}
 
         % Prompt Guardrails box
-        \node[draw=hdxgreen, fill=hdxgreen!80, text=white, minimum width=2.2cm, minimum height=1.3cm, rounded corners=3pt, font=\footnotesize\bfseries, align=center] (prompt) at (-2,1.2) {Prompt\\Guardrails};
+        \node[draw=hdxgreen, fill=hdxgreen!80, text=white, minimum width=2.2cm, minimum height=1.3cm, rounded corners=3pt, font=\footnotesize\bfseries, align=center] (prompt) at (-1.5,1.3) {Prompt\\Guardrails};
 
         % Response Guardrails box
-        \node[draw=hdxgreen, fill=hdxgreen!80, text=white, minimum width=2.2cm, minimum height=1.3cm, rounded corners=3pt, font=\footnotesize\bfseries, align=center] (response) at (-2,-1.2) {Response\\Guardrails};
+        \node[draw=hdxgreen, fill=hdxgreen!80, text=white, minimum width=2.2cm, minimum height=1.3cm, rounded corners=3pt, font=\footnotesize\bfseries, align=center] (response) at (-1.5,-1.3) {Response\\Guardrails};
 
         % LLM box
-        \node[draw=hdxblue, fill=hdxblue!80, text=black, minimum width=2.2cm, minimum height=2.2cm, rounded corners=3pt, font=\large\bfseries] (llm) at (2.5,0) {LLM};
+        \node[draw=hdxblue, fill=hdxblue!80, text=black, minimum width=2.2cm, minimum height=2.2cm, rounded corners=3pt, font=\large\bfseries] (llm) at (3,0) {LLM};
 
-        % Arrows
-        \draw[->, thick, black] (-4.5,0.4) -- (prompt.west);
-        \draw[->, thick, black] (prompt.east) -- (llm.north west);
-        \draw[->, thick, black] (llm.south west) -- (response.east);
-        \draw[->, thick, black] (response.west) -- (-4.5,-0.4);
+        % Orthogonal arrows using |- and -| syntax
+        % User to Prompt Guardrails (horizontal then up)
+        \draw[->, thick, black] (-4.2,0) -- (-4.2,1.3) -- (prompt.west);
+
+        % Prompt Guardrails to LLM (right then down to meet LLM)
+        \draw[->, thick, black] (prompt.east) -- (0.8,1.3) -- (0.8,0.5) -- (llm.west);
+
+        % LLM to Response Guardrails (left then down)
+        \draw[->, thick, black] (llm.west) ++(0,-0.5) -- (0.8,-0.5) -- (0.8,-1.3) -- (response.east);
+
+        % Response Guardrails back to User (left then up)
+        \draw[->, thick, black] (response.west) -- (-4.2,-1.3) -- (-4.2,0);
     \end{tikzpicture}
 
     \vspace{3mm}
@@ -672,10 +685,11 @@
         \definecolor{hdxgreen}{RGB}{107,142,35}
         \definecolor{hdxblue}{RGB}{135,170,200}
 
-        % User silhouette - proper head and shoulders
+        % User silhouette - head, neck, shoulders
         \begin{scope}[shift={(-6.8,0)}]
-            \fill[gray!50] (0,0.4) circle (0.35);
-            \fill[gray!50] (-0.5,-0.4) arc (180:360:0.5 and 0.35) -- cycle;
+            \fill[gray!45] (0,0.4) circle (0.3);
+            \fill[gray!45] (-0.1,-0.05) rectangle (0.1,0.15);
+            \fill[gray!45, rounded corners=2pt] (-0.5,-0.5) rectangle (0.5,-0.05);
         \end{scope}
 
         % Multiple input guardrail layers
