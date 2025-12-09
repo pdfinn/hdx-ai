@@ -11,6 +11,8 @@
 
 % Additional packages
 \usepackage{pifont}  % For \ding symbols (checkboxes, etc.)
+\usepackage{tikz}    % For diagrams
+\usetikzlibrary{shapes,arrows,positioning,fit,calc,decorations.pathreplacing}
 
 % Presentation metadata
 \title{AI: Ethics, Security \& Product Development}
@@ -236,6 +238,19 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{AI Safety Index 2024}
+    \centering
+    \vspace{2mm}
+
+    % NOTE: Save the FLI AI Safety Index image to assets/stock/fli-ai-safety-index.png
+    % Download from: https://futureoflife.org/document/fli-ai-safety-index-2024/
+    \includegraphics[width=0.85\textwidth]{assets/stock/fli-ai-safety-index.png}
+
+    \vspace{3mm}
+
+    {\small Source: Future of Life Institute --- \url{https://futureoflife.org/document/fli-ai-safety-index-2024/}}
+\end{frame}
+
 %% ============================================================================
 %% SECTION 2: DATA GOVERNANCE
 %% ============================================================================
@@ -416,6 +431,289 @@
 %% ============================================================================
 
 \section{AI Security}
+
+%% --- Security Foundations (for beginners) ---
+
+\begin{frame}{The CIA Triad: Foundation of Information Security}
+    \centering
+    \vspace{5mm}
+
+    \begin{tikzpicture}[scale=0.9]
+        % Define the HDX purple color
+        \definecolor{hdxpurple}{RGB}{102,51,153}
+
+        % Top circle - Confidentiality
+        \node[circle, fill=hdxpurple, text=white, minimum size=3.5cm, font=\large\bfseries] (conf) at (0,2.5) {Confidentiality};
+
+        % Bottom left circle - Integrity
+        \node[circle, fill=hdxpurple, text=white, minimum size=3.5cm, font=\large\bfseries] (int) at (-3,-1.5) {Integrity};
+
+        % Bottom right circle - Availability
+        \node[circle, fill=hdxpurple, text=white, minimum size=3.5cm, font=\large\bfseries] (avail) at (3,-1.5) {Availability};
+
+        % Connecting lines
+        \draw[thick, hdxpurple] (conf) -- (int);
+        \draw[thick, hdxpurple] (int) -- (avail);
+        \draw[thick, hdxpurple] (avail) -- (conf);
+    \end{tikzpicture}
+
+    \vspace{5mm}
+
+    {\small The three pillars that every security professional must protect.}
+\end{frame}
+
+\begin{frame}{The OT Security Tetrad: Adding Safety}
+    \centering
+    \vspace{3mm}
+
+    \begin{tikzpicture}[scale=0.8]
+        \definecolor{hdxpurple}{RGB}{102,51,153}
+        \definecolor{hdxgreen}{RGB}{107,142,35}
+
+        % Diamond arrangement
+        % Top - Confidentiality
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.8cm, font=\normalsize\bfseries] (conf) at (0,3) {Confidentiality};
+
+        % Left - Integrity
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.8cm, font=\normalsize\bfseries] (int) at (-3.5,0) {Integrity};
+
+        % Right - Availability
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.8cm, font=\normalsize\bfseries] (avail) at (3.5,0) {Availability};
+
+        % Bottom - Safety (highlighted)
+        \node[circle, fill=hdxgreen, text=white, minimum size=2.8cm, font=\normalsize\bfseries] (safe) at (0,-3) {Safety};
+
+        % Connecting lines
+        \draw[thick, hdxpurple] (conf) -- (int);
+        \draw[thick, hdxpurple] (conf) -- (avail);
+        \draw[thick, hdxpurple] (int) -- (avail);
+        \draw[thick, hdxgreen] (int) -- (safe);
+        \draw[thick, hdxgreen] (avail) -- (safe);
+    \end{tikzpicture}
+
+    \vspace{3mm}
+
+    {\small In Operational Technology (OT) and AI systems, \textbf{Safety} becomes the fourth pillar:\\preventing harm to people, property, and the environment.}
+\end{frame}
+
+\begin{frame}{Confidentiality}
+    \begin{columns}[c]
+        \begin{column}{0.6\textwidth}
+            \textbf{Ensuring information is accessible only to authorized parties.}
+
+            \vspace{5mm}
+
+            \textbf{Key Controls:}
+            \begin{itemize}
+                \item \textbf{Encryption}: Data at rest and in transit
+                \item \textbf{Access Controls}: Role-based permissions
+                \item \textbf{Authentication}: Verify identity before access
+                \item \textbf{Classification}: Label data by sensitivity
+            \end{itemize}
+
+            \vspace{3mm}
+
+            \begin{alertblock}{AI Concern}
+                Can the model be manipulated to reveal training data or system prompts?
+            \end{alertblock}
+        \end{column}
+        \begin{column}{0.35\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \definecolor{hdxpurple}{RGB}{102,51,153}
+                \node[circle, fill=hdxpurple, text=white, minimum size=3cm, font=\large\bfseries] {C};
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Integrity}
+    \begin{columns}[c]
+        \begin{column}{0.6\textwidth}
+            \textbf{Ensuring information is accurate and unaltered.}
+
+            \vspace{5mm}
+
+            \textbf{Key Controls:}
+            \begin{itemize}
+                \item \textbf{Hashing}: Detect unauthorized changes
+                \item \textbf{Digital Signatures}: Verify authenticity
+                \item \textbf{Version Control}: Track all modifications
+                \item \textbf{Input Validation}: Prevent malformed data
+            \end{itemize}
+
+            \vspace{3mm}
+
+            \begin{alertblock}{AI Concern}
+                Can training data or model weights be poisoned or tampered with?
+            \end{alertblock}
+        \end{column}
+        \begin{column}{0.35\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \definecolor{hdxpurple}{RGB}{102,51,153}
+                \node[circle, fill=hdxpurple, text=white, minimum size=3cm, font=\large\bfseries] {I};
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Availability}
+    \begin{columns}[c]
+        \begin{column}{0.6\textwidth}
+            \textbf{Ensuring systems and data are accessible when needed.}
+
+            \vspace{5mm}
+
+            \textbf{Key Controls:}
+            \begin{itemize}
+                \item \textbf{Redundancy}: Multiple copies and failover
+                \item \textbf{Backups}: Regular, tested recovery
+                \item \textbf{DDoS Protection}: Prevent service disruption
+                \item \textbf{Capacity Planning}: Handle peak loads
+            \end{itemize}
+
+            \vspace{3mm}
+
+            \begin{alertblock}{AI Concern}
+                Can the model be overwhelmed, degraded, or taken offline by attackers?
+            \end{alertblock}
+        \end{column}
+        \begin{column}{0.35\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \definecolor{hdxpurple}{RGB}{102,51,153}
+                \node[circle, fill=hdxpurple, text=white, minimum size=3cm, font=\large\bfseries] {A};
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Defence in Depth}
+    \centering
+    \vspace{3mm}
+
+    \begin{tikzpicture}[scale=0.85]
+        \definecolor{hdxpurple}{RGB}{102,51,153}
+        \definecolor{layer1}{RGB}{139,90,179}
+        \definecolor{layer2}{RGB}{116,70,166}
+        \definecolor{layer3}{RGB}{93,50,143}
+        \definecolor{layer4}{RGB}{70,30,120}
+
+        % Concentric rectangles (outer to inner)
+        \node[draw=layer1, fill=layer1!30, minimum width=12cm, minimum height=5.5cm, rounded corners=5pt] (outer) at (0,0) {};
+        \node[draw=layer2, fill=layer2!30, minimum width=9.5cm, minimum height=4.2cm, rounded corners=5pt] at (0,0) {};
+        \node[draw=layer3, fill=layer3!30, minimum width=7cm, minimum height=3cm, rounded corners=5pt] at (0,0) {};
+        \node[draw=layer4, fill=layer4!30, minimum width=4.5cm, minimum height=1.8cm, rounded corners=5pt] at (0,0) {};
+
+        % Labels
+        \node[font=\small\bfseries, text=layer4] at (0,0) {Critical Assets};
+        \node[font=\small, text=layer3] at (0,-1.1) {Application Security};
+        \node[font=\small, text=layer2] at (0,-1.8) {Network Security};
+        \node[font=\small, text=layer1] at (0,-2.5) {Perimeter Security};
+
+        % Side labels
+        \node[font=\footnotesize, anchor=west] at (5.5,2) {Firewalls, IDS};
+        \node[font=\footnotesize, anchor=west] at (5.5,0.8) {Segmentation, VPNs};
+        \node[font=\footnotesize, anchor=west] at (5.5,-0.4) {Input validation, Auth};
+        \node[font=\footnotesize, anchor=west] at (5.5,-1.6) {Encryption, Access control};
+    \end{tikzpicture}
+
+    \vspace{3mm}
+
+    \textbf{Principle}: No single security control is sufficient.\\Multiple layers ensure that if one fails, others still protect.
+\end{frame}
+
+\begin{frame}{Guardrails: Protecting AI at the Boundary}
+    \centering
+    \vspace{3mm}
+
+    \begin{tikzpicture}[scale=0.9, every node/.style={font=\small}]
+        \definecolor{hdxpurple}{RGB}{102,51,153}
+        \definecolor{hdxgreen}{RGB}{107,142,35}
+        \definecolor{hdxblue}{RGB}{135,170,200}
+
+        % User silhouette (simplified head shape)
+        \node[circle, fill=gray!40, minimum size=1.2cm] (head) at (-5,0.5) {};
+        \node[trapezium, fill=gray!40, minimum width=1.5cm, minimum height=0.8cm, trapezium angle=70] at (-5,-0.5) {};
+
+        % Prompt Guardrails box
+        \node[draw=hdxgreen, fill=hdxgreen!80, text=white, minimum width=2.5cm, minimum height=1.5cm, rounded corners=3pt, font=\bfseries, align=center] (prompt) at (-1.5,1.5) {Prompt\\Guardrails};
+
+        % Response Guardrails box
+        \node[draw=hdxgreen, fill=hdxgreen!80, text=white, minimum width=2.5cm, minimum height=1.5cm, rounded corners=3pt, font=\bfseries, align=center] (response) at (-1.5,-1.5) {Response\\Guardrails};
+
+        % LLM box
+        \node[draw=hdxblue, fill=hdxblue!80, text=black, minimum width=2.5cm, minimum height=2.5cm, rounded corners=3pt, font=\Large\bfseries] (llm) at (3,0) {LLM};
+
+        % Arrows
+        \draw[->, thick, black] (-4,0.5) -- (prompt.west);
+        \draw[->, thick, black] (prompt.east) -- (llm.north west);
+        \draw[->, thick, black] (llm.south west) -- (response.east);
+        \draw[->, thick, black] (response.west) -- (-4,-0.5);
+    \end{tikzpicture}
+
+    \vspace{5mm}
+
+    \begin{block}{What Guardrails Do}
+        \begin{itemize}
+            \item \textbf{Prompt Guardrails}: Filter malicious inputs, detect injection attempts
+            \item \textbf{Response Guardrails}: Block sensitive data, enforce content policies
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Defence in Depth for AI Guardrails}
+    \centering
+    \vspace{2mm}
+
+    \begin{tikzpicture}[scale=0.75, every node/.style={font=\footnotesize}]
+        \definecolor{hdxpurple}{RGB}{102,51,153}
+        \definecolor{hdxgreen}{RGB}{107,142,35}
+        \definecolor{hdxblue}{RGB}{135,170,200}
+
+        % User
+        \node[circle, fill=gray!40, minimum size=0.8cm] at (-6.5,0.3) {};
+        \node[trapezium, fill=gray!40, minimum width=1cm, minimum height=0.5cm, trapezium angle=70] at (-6.5,-0.3) {};
+
+        % Multiple input guardrail layers
+        \node[draw=hdxgreen!70, fill=hdxgreen!20, minimum width=1.2cm, minimum height=2.5cm, rounded corners=2pt] (g1) at (-4.5,0) {};
+        \node[draw=hdxgreen!80, fill=hdxgreen!30, minimum width=1.2cm, minimum height=2.5cm, rounded corners=2pt] (g2) at (-3.3,0) {};
+        \node[draw=hdxgreen!90, fill=hdxgreen!40, minimum width=1.2cm, minimum height=2.5cm, rounded corners=2pt] (g3) at (-2.1,0) {};
+
+        % Labels for input guardrails
+        \node[rotate=90, font=\tiny] at (-4.5,0) {Pattern Filter};
+        \node[rotate=90, font=\tiny] at (-3.3,0) {Intent Classifier};
+        \node[rotate=90, font=\tiny] at (-2.1,0) {Context Check};
+
+        % LLM
+        \node[draw=hdxblue, fill=hdxblue!60, minimum width=1.8cm, minimum height=2.5cm, rounded corners=3pt, font=\normalsize\bfseries] (llm) at (0,0) {LLM};
+
+        % Multiple output guardrail layers
+        \node[draw=hdxgreen!90, fill=hdxgreen!40, minimum width=1.2cm, minimum height=2.5cm, rounded corners=2pt] (o1) at (2.1,0) {};
+        \node[draw=hdxgreen!80, fill=hdxgreen!30, minimum width=1.2cm, minimum height=2.5cm, rounded corners=2pt] (o2) at (3.3,0) {};
+        \node[draw=hdxgreen!70, fill=hdxgreen!20, minimum width=1.2cm, minimum height=2.5cm, rounded corners=2pt] (o3) at (4.5,0) {};
+
+        % Labels for output guardrails
+        \node[rotate=90, font=\tiny] at (2.1,0) {PII Filter};
+        \node[rotate=90, font=\tiny] at (3.3,0) {Policy Check};
+        \node[rotate=90, font=\tiny] at (4.5,0) {Toxicity Filter};
+
+        % Arrows
+        \draw[->, thick] (-5.8,0) -- (g1.west);
+        \draw[->, thick] (o3.east) -- (5.5,0);
+
+        % Brace labels
+        \draw[decorate, decoration={brace, amplitude=5pt, mirror}] (-4.9,-1.5) -- (-1.7,-1.5) node[midway, below=5pt, font=\small] {Input Layers};
+        \draw[decorate, decoration={brace, amplitude=5pt, mirror}] (1.7,-1.5) -- (4.9,-1.5) node[midway, below=5pt, font=\small] {Output Layers};
+    \end{tikzpicture}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{Key Principle}
+        Multiple guardrail layers catch what individual filters miss.\\Each layer uses different techniques: regex, ML classifiers, LLM-based checks.
+    \end{alertblock}
+\end{frame}
 
 {
 \hdxpurplebg
