@@ -913,12 +913,14 @@
         \node[draw=hdxpurple, fill=hdxpurple!20, minimum width=2.5cm, minimum height=1cm, rounded corners=3pt] (analytics) at (4,0) {Analytics};
         \node[draw=hdxgreen, fill=hdxgreen!20, minimum width=2.5cm, minimum height=1cm, rounded corners=3pt] (improve) at (0,-2.5) {Improvements};
 
-        % Arrows
-        \draw[->, thick] (users) -- (ai) node[midway, above] {Inputs};
-        \draw[->, thick] (ai) -- (analytics) node[midway, above] {Outputs};
-        \draw[->, thick] (analytics) -- (improve) node[midway, right] {Insights};
-        \draw[->, thick] (improve) -- (ai) node[midway, left] {Updates};
-        \draw[->, thick, dashed] (users) to[bend right=30] node[midway, below] {Feedback} (improve);
+        % Arrows with labels offset above the line
+        \draw[->, thick] (users) -- (ai);
+        \node at (-2,0.5) {Inputs};
+        \draw[->, thick] (ai) -- (analytics);
+        \node at (2,0.5) {Outputs};
+        \draw[->, thick] (analytics) -- (improve) node[midway, right, xshift=2pt] {Insights};
+        \draw[->, thick] (improve) -- (ai) node[midway, left, xshift=-2pt] {Updates};
+        \draw[->, thick, dashed] (users) to[bend right=30] node[midway, below, yshift=-2pt] {Feedback} (improve);
     \end{tikzpicture}
 
     \vspace{3mm}
