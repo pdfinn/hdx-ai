@@ -440,12 +440,12 @@
     \begin{tikzpicture}
         \definecolor{hdxpurple}{RGB}{102,51,153}
 
-        % All circles exactly 1.8cm - using inner sep=0pt to prevent text from expanding circle
-        % Text width constrains the text to wrap inside the circle
+        % All circles 2.4cm - larger to fit text without truncation
+        % Using inner sep=0pt and text width to control sizing
 
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, inner sep=0pt, font=\tiny\bfseries, align=center, text width=1.5cm] (conf) at (0,1.5) {Confiden-\\tiality};
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, inner sep=0pt, font=\tiny\bfseries, align=center] (int) at (-1.7,-0.8) {Integrity};
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, inner sep=0pt, font=\tiny\bfseries, align=center, text width=1.5cm] (avail) at (1.7,-0.8) {Avail-\\ability};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center, text width=2cm] (conf) at (0,1.8) {Confiden-\\tiality};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center] (int) at (-2.2,-1.1) {Integrity};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center, text width=2cm] (avail) at (2.2,-1.1) {Avail-\\ability};
 
         \draw[thick, hdxpurple] (conf) -- (int);
         \draw[thick, hdxpurple] (int) -- (avail);
@@ -464,13 +464,13 @@
         \definecolor{hdxpurple}{RGB}{102,51,153}
         \definecolor{hdxgreen}{RGB}{107,142,35}
 
-        % All circles exactly 1.8cm - using inner sep=0pt to prevent text expansion
+        % All circles 2.4cm - larger to fit text without truncation
         % Safety in center, CIA at cardinal points
 
-        \node[circle, fill=hdxgreen, text=white, minimum size=1.8cm, inner sep=0pt, font=\tiny\bfseries, align=center] (safe) at (0,0) {Safety};
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, inner sep=0pt, font=\tiny\bfseries, align=center, text width=1.5cm] (conf) at (0,2.5) {Confiden-\\tiality};
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, inner sep=0pt, font=\tiny\bfseries, align=center] (int) at (-2.5,0) {Integrity};
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, inner sep=0pt, font=\tiny\bfseries, align=center, text width=1.5cm] (avail) at (2.5,0) {Avail-\\ability};
+        \node[circle, fill=hdxgreen, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center] (safe) at (0,0) {Safety};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center, text width=2cm] (conf) at (0,2.8) {Confiden-\\tiality};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center] (int) at (-2.8,0) {Integrity};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center, text width=2cm] (avail) at (2.8,0) {Avail-\\ability};
 
         % Lines from CIA to Safety (emphasized)
         \draw[thick, hdxgreen] (conf) -- (safe);
