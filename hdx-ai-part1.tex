@@ -12,11 +12,11 @@
 % Additional packages
 \usepackage{pifont}  % For \ding symbols (checkboxes, etc.)
 \usepackage{tikz}    % For diagrams
+\usepackage{hyperref} % For URLs
 \usetikzlibrary{shapes,arrows,positioning,fit,calc,decorations.pathreplacing}
 
 % Presentation metadata
-\title{Introduction to GenAI}
-\subtitle{Part 1: Data and Project Management}
+\title{GenAI Data Foundations and Product Development}
 \author{Happy Digital X}
 \institute{Happy Digital X | Tsinghua University}
 \date{\today}
@@ -36,20 +36,461 @@
 %% ============================================================================
 
 \begin{frame}{Today's Agenda}
-    \hdxtopicitem{1}{Data Governance}{Privacy regulations and data management}
+    \hdxtopicitem{1}{Data Foundations}{How GenAI works, quality, currency, and governance}
 
     \hdxtopicitem{2}{Product Development}{Lifecycle, deployment, and ROI}
-
-    \vspace{5mm}
-
-    {\small\textit{Duration: 1 hour}}
 \end{frame}
 
 %% ============================================================================
-%% SECTION 1: DATA GOVERNANCE
+%% SECTION 1: DATA FOUNDATIONS
 %% ============================================================================
 
-\section{Data Governance}
+\section{Data Foundations}
+
+%% --- Menti: Opening engagement ---
+
+\begin{frame}{Quick Poll}
+    \centering
+    \vspace{5mm}
+
+    {\Large\textbf{How would you rate your organization's\\data readiness for AI?}}
+
+    \vspace{8mm}
+
+    {\large Go to \textbf{menti.com} and enter the code}
+
+    \vspace{5mm}
+
+    {\Huge\textbf{[CODE]}}
+
+    \vspace{5mm}
+
+    \textit{1 = Not ready at all \quad 5 = Fully ready}
+\end{frame}
+
+{
+\hdxpurplebg
+\begin{frame}{The Fundamental Shift}
+    \centering
+    \vspace{10mm}
+
+    {\Large\bfseries
+    Traditional software is \textit{programmed}.\\[5mm]
+    GenAI is \textit{trained}.}
+
+    \vspace{10mm}
+
+    This changes everything about how we build,\\test, and manage AI systems.
+\end{frame}
+}
+
+\begin{frame}{Two Paradigms of Artificial Intelligence}
+    \begin{columns}[c]
+        \begin{column}{0.48\textwidth}
+            \textbf{GOFAI: ``Good Old-Fashioned AI''}
+
+            \vspace{2mm}
+
+            \begin{itemize}
+                \item Rules written by humans
+                \item Symbolic reasoning
+                \item Deterministic outputs
+                \item Explainable decisions
+                \item Brittle at edge cases
+            \end{itemize}
+
+            \vspace{2mm}
+
+            \textit{Example}: Chess engines, expert systems, spell checkers
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Neural Networks (Connectionist)}
+
+            \vspace{2mm}
+
+            \begin{itemize}
+                \item Patterns learned from data
+                \item Statistical inference
+                \item Probabilistic outputs
+                \item Often opaque (``black box'')
+                \item Flexible but unpredictable
+            \end{itemize}
+
+            \vspace{2mm}
+
+            \textit{Example}: ChatGPT, image recognition, voice assistants
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Example: A Medical Diagnosis Expert System}
+    \centering
+    \vspace{-3mm}
+    \begin{tikzpicture}[scale=0.72, transform shape,
+        node distance=0.7cm and 1.2cm,
+        decision/.style={diamond, draw=hdxpurple, fill=hdxpurple!20, text width=1.1cm, align=center, inner sep=0pt, font=\scriptsize, aspect=1.2},
+        outcome/.style={rectangle, rounded corners, draw=hdxgold, fill=hdxgold!20, text width=1.3cm, align=center, font=\scriptsize, minimum height=0.5cm},
+        arrow/.style={->, thick, >=stealth}
+    ]
+        % Level 1 - Root
+        \node[decision] (fever) {Fever?};
+
+        % Level 2
+        \node[decision, below left=0.8cm and 3cm of fever] (cough) {Cough?};
+        \node[decision, below right=0.8cm and 3cm of fever] (pain) {Pain?};
+
+        % Level 3
+        \node[decision, below left=0.8cm and 1.2cm of cough] (phlegm) {Phlegm?};
+        \node[decision, below right=0.8cm and 1.2cm of cough] (sore) {Sore\\Throat?};
+        \node[decision, below left=0.8cm and 1.2cm of pain] (head) {Head?};
+        \node[decision, below right=0.8cm and 1.2cm of pain] (chest) {Chest?};
+
+        % Outcomes
+        \node[outcome, below=0.7cm of phlegm] (bronch) {Bronchitis};
+        \node[outcome, below=0.7cm of sore] (flu) {Influenza};
+        \node[outcome, below=0.7cm of head] (migraine) {Migraine};
+        \node[outcome, below=0.7cm of chest] (cardiac) {See Doctor};
+
+        % Additional outcomes for No paths
+        \node[outcome, right=0.6cm of bronch] (cold) {Cold};
+        \node[outcome, right=0.6cm of migraine] (tension) {Tension};
+
+        % Arrows Level 1 to 2
+        \draw[arrow] (fever) -- node[above left, font=\tiny] {Yes} (cough);
+        \draw[arrow] (fever) -- node[above right, font=\tiny] {No} (pain);
+
+        % Arrows Level 2 to 3
+        \draw[arrow] (cough) -- node[above left, font=\tiny] {Yes} (phlegm);
+        \draw[arrow] (cough) -- node[above right, font=\tiny] {No} (sore);
+        \draw[arrow] (pain) -- node[above left, font=\tiny] {Yes} (head);
+        \draw[arrow] (pain) -- node[above right, font=\tiny] {No} (chest);
+
+        % Arrows to outcomes
+        \draw[arrow] (phlegm) -- node[left, font=\tiny] {Yes} (bronch);
+        \draw[arrow] (phlegm.south east) -- node[right, font=\tiny, pos=0.3] {No} (cold.north);
+        \draw[arrow] (sore) -- node[left, font=\tiny] {Yes} (flu);
+        \draw[arrow] (head) -- node[left, font=\tiny] {Yes} (migraine);
+        \draw[arrow] (head.south east) -- node[right, font=\tiny, pos=0.3] {No} (tension.north);
+        \draw[arrow] (chest) -- node[right, font=\tiny] {Yes} (cardiac);
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{GOFAI: Strengths and Limitations}
+    \begin{columns}[t]
+        \begin{column}{0.45\textwidth}
+            \textbf{Strengths}
+
+            \vspace{3mm}
+
+            \begin{itemize}
+                \item Transparent and explainable
+                \item Predictable outputs
+                \item Auditable for compliance
+                \item No training data needed
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \textbf{Limitations}
+
+            \vspace{3mm}
+
+            \begin{itemize}
+                \item Brittle at edge cases
+                \item Doesn't learn from data
+                \item Doesn't scale to complexity
+                \item Can't handle ambiguity
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \vspace{8mm}
+
+    \begin{block}{Key Insight}
+        Expert systems encode \textit{what humans already know}. Neural networks discover patterns humans \textit{haven't articulated}.
+    \end{block}
+\end{frame}
+
+\begin{frame}{How Neural Network Training Works}
+    \textbf{High-Level Process:}
+
+    \vspace{3mm}
+
+    \begin{enumerate}
+        \item \textbf{Collect Data}: Massive datasets (text, images, code, etc.)
+
+        \item \textbf{Initialize}: Start with random ``weights'' (numerical parameters)
+
+        \item \textbf{Train}: Show examples, adjust weights to reduce errors
+
+        \item \textbf{Iterate}: Repeat billions of times across trillions of examples
+
+        \item \textbf{Result}: A model that has learned patterns, not rules
+    \end{enumerate}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{Key Insight}
+        The AI doesn't ``know'' anything---it has learned statistical patterns. When it generates text, it's predicting ``what word is likely to come next?''
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{What Are ``Weights''? The Dial Analogy}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            Imagine a mixing board with \textbf{billions of dials}.
+
+            \vspace{3mm}
+
+            \begin{itemize}
+                \item Each dial controls how much one piece of information influences another
+
+                \item At first, all dials are set randomly---output is nonsense
+
+                \item Training = adjusting dials slightly after each example
+
+                \item After trillions of adjustments, the dials are tuned to produce useful output
+            \end{itemize}
+
+            \vspace{3mm}
+
+            \textbf{GPT-4 has approximately 1.7 trillion dials.}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{block}{The Black Box Problem}
+                No human set these dials. No human can explain why dial \#847,293,102 is set to 0.0023.
+
+                \vspace{2mm}
+
+                The model works, but we can't fully explain \textit{why}.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{The Scale of Training Data}
+    \textbf{Modern GenAI models are trained on unprecedented scale:}
+
+    \vspace{3mm}
+
+    \begin{itemize}
+        \item \textbf{GPT-4}: Estimated 13+ trillion tokens of text
+        \item \textbf{Image models}: Billions of image-text pairs
+        \item \textbf{Code models}: Hundreds of billions of lines of code
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \hdxtwocolumn{
+        \textbf{Strength}
+        \begin{itemize}
+            \item Broad knowledge
+            \item Handles novel situations
+            \item No manual rule-writing
+            \item Learns nuance
+        \end{itemize}
+    }{
+        \textbf{Weakness}
+        \begin{itemize}
+            \item Can't verify all data
+            \item Absorbs biases
+            \item \textbf{GIGO}: ``Garbage in, garbage out''
+            \item Hard to ``unlearn''
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{Chihuahua or Muffin?}
+    \centering
+    \vspace{-2mm}
+
+    \includegraphics[height=0.78\textheight]{assets/stock/chihuahua-muffin.jpg}
+
+    \vspace{1mm}
+
+    {\tiny Image credit: @teenybiscuit / Karen Zack}
+\end{frame}
+
+\begin{frame}{Exercise: Try It Yourself}
+    \textbf{Try This Now:}
+
+    \vspace{5mm}
+
+    \begin{enumerate}
+        \item Open ChatGPT, Claude, or another GenAI
+
+        \item Upload the chihuahua/muffin image
+
+        \item Ask: ``How many dogs are in this image?''
+    \end{enumerate}
+
+    \vspace{8mm}
+
+    \begin{block}{Discussion}
+        What did you observe? Were the results what you expected?
+    \end{block}
+\end{frame}
+
+%% --- Menti: AI dog count ---
+
+\begin{frame}{Quick Poll}
+    \centering
+    \vspace{5mm}
+
+    {\Large\textbf{How many dogs did your AI count?}}
+
+    \vspace{8mm}
+
+    {\large Go to \textbf{menti.com} and enter the code}
+
+    \vspace{5mm}
+
+    {\Huge\textbf{[CODE]}}
+\end{frame}
+
+\begin{frame}{Why Results Vary: Probabilistic, Not Deterministic}
+    \textbf{Traditional Software:}
+    \begin{itemize}
+        \item Same input $\rightarrow$ Same output (always)
+        \item 2 + 2 = 4, every time
+    \end{itemize}
+
+    \vspace{2mm}
+
+    \textbf{GenAI:}
+    \begin{itemize}
+        \item Same input $\rightarrow$ \textit{Similar} output (usually)
+        \item Outputs sampled from probability distributions
+        \item ``Temperature'' controls randomness
+        \item Even at temperature=0, results can vary
+    \end{itemize}
+
+    \vspace{2mm}
+
+    \begin{alertblock}{Implication}
+        You cannot test GenAI like traditional software. You need statistical evaluation over many samples.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{RLHF: Teaching AI to Be Helpful}
+    \textbf{Reinforcement Learning from Human Feedback (RLHF)}
+
+    \vspace{2mm}
+
+    After initial training, models are refined using human preferences:
+
+    \vspace{2mm}
+
+    \begin{enumerate}
+        \item Humans rate AI responses (helpful, harmless, honest)
+        \item Model learns to maximize these ratings
+        \item Creates more ``aligned'' behavior
+    \end{enumerate}
+
+    \vspace{3mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Benefits}
+            \begin{itemize}
+                \item Reduces harmful outputs
+                \item Improves usefulness
+                \item Adds safety guardrails
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Risks}
+            \begin{itemize}
+                \item Evaluator biases transfer
+                \item ``Sycophancy''---tells you what you want to hear
+                \item Majority views dominate
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{RLHF Bias: Who Trains the Trainers?}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{The evaluators shape the AI:}
+
+            \vspace{2mm}
+
+            \begin{itemize}
+                \item If evaluators are from one demographic, the model reflects their worldview
+
+                \item If evaluators prefer polite over accurate, the model learns to be polite---even when wrong
+
+                \item Minority perspectives can be systematically deprioritized
+
+                \item Models can learn to \textit{manipulate} rather than genuinely help
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{alertblock}{Example}
+                A model trained by evaluators who dislike blunt answers will learn to soften bad news---even when clarity matters more than comfort.
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Case Study: Replika's Feedback Loop Disaster}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{Replika}: AI companion chatbot (2017--present)
+
+            \vspace{2mm}
+
+            \textbf{What Happened:}
+            \begin{enumerate}
+                \item Trained on 100M+ web dialogues
+                \item Users could upvote/downvote responses
+                \item Some users engaged in sexual roleplay
+                \item AI learned this behavior got positive feedback
+                \item AI began \textit{initiating} sexual content unprompted
+            \end{enumerate}
+
+            \vspace{2mm}
+
+            \textbf{Result}: Reports of AI ``sexually harassing'' users, including minors. Italy banned the app in 2023.
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{alertblock}{Lessons}
+                \begin{itemize}
+                    \item Training data quality matters
+                    \item Feedback loops amplify patterns
+                    \item User behavior becomes model behavior
+                    \item GIGO at scale
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Implications for Your Organization}
+    \textbf{What This Means for GenAI Deployment:}
+
+    \vspace{3mm}
+
+    \begin{enumerate}
+        \item \textbf{Testing is Different}: Statistical evaluation, not pass/fail
+
+        \item \textbf{Edge Cases Are Unpredictable}: You can't enumerate all failure modes
+
+        \item \textbf{Data Quality is Critical}: Your fine-tuning data shapes behavior
+
+        \item \textbf{Feedback Loops Matter}: User interactions can shift model behavior
+
+        \item \textbf{Bias is Inherited}: From training data \textit{and} from human evaluators
+
+        \item \textbf{``Unlearning'' is Hard}: Removing problematic knowledge is technically difficult
+    \end{enumerate}
+
+    \vspace{3mm}
+
+    \begin{block}{The Data Imperative}
+        This is why we spend 60--80\% of GenAI project time on data preparation.
+    \end{block}
+\end{frame}
 
 {
 \hdxpurplebg
@@ -101,16 +542,143 @@
         \item \textbf{Training Data}: Building/fine-tuning models\\
               \textit{Strategic value: Competitive moat}
 
-        \item \textbf{Context Data (RAG)}: Grounding model outputs\\
+        \item \textbf{Context Data}: Grounding model outputs in your information\\
+              Uses \textbf{RAG} (Retrieval-Augmented Generation): the AI retrieves relevant documents before generating a response\\
               \textit{Strategic value: Accuracy \& relevance}
 
         \item \textbf{Operational Data}: Real-time model inputs\\
               \textit{Strategic value: Timeliness}
     \end{itemize}
+\end{frame}
+
+\begin{frame}{The Data Quality Journey}
+    \begin{columns}[c]
+        \begin{column}{0.6\textwidth}
+            \textbf{From Raw Data to AI-Ready:}
+
+            \vspace{3mm}
+
+            \begin{enumerate}
+                \item \textbf{Raw Data} --- Unprocessed, unvalidated\\
+                      \textit{``Rough diamond''---contains value but unusable as-is}
+
+                \item \textbf{Cleaned Data} --- Errors removed, formats standardized\\
+                      \textit{Deduplicated, consistent encoding}
+
+                \item \textbf{Validated Data} --- Quality checked, business rules applied\\
+                      \textit{Relationships verified, anomalies flagged}
+
+                \item \textbf{AI-Ready Data} --- Labeled, balanced, documented\\
+                      \textit{Ready for training or retrieval}
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.35\textwidth}
+            \begin{alertblock}{Reality}
+                Most organizations are stuck at stage 1 or 2. This is why 60--80\% of GenAI project time is data preparation.
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%% --- Menti: Data Quality Journey ---
+
+\begin{frame}{Quick Poll}
+    \centering
+    \vspace{5mm}
+
+    {\Large\textbf{Where is your organization on the\\data quality journey?}}
+
+    \vspace{8mm}
+
+    {\large Go to \textbf{menti.com} and enter the code}
 
     \vspace{5mm}
 
-    \textbf{Quality Dimensions}: Accuracy, Completeness, Consistency, Timeliness, Representativeness
+    {\Huge\textbf{[CODE]}}
+
+    \vspace{5mm}
+
+    \textit{1 = Raw Data \quad 2 = Cleaned \quad 3 = Validated \quad 4 = AI-Ready}
+\end{frame}
+
+\begin{frame}{Data Quality Dimensions}
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Accuracy}\\
+            Does the data reflect reality?\\
+            \textit{Incorrect labels poison AI training}
+
+            \vspace{3mm}
+
+            \textbf{Completeness}\\
+            Are there missing values or gaps?\\
+            \textit{Missing data creates blind spots}
+
+            \vspace{3mm}
+
+            \textbf{Consistency}\\
+            Same entity, same representation?\\
+            \textit{``USA'' vs ``United States'' vs ``US''}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Timeliness}\\
+            Is the data current enough?\\
+            \textit{Stale data = stale predictions}
+
+            \vspace{3mm}
+
+            \textbf{Representativeness}\\
+            Does data reflect the real population?\\
+            \textit{Biased samples = biased AI}
+
+            \vspace{3mm}
+
+            \textbf{Provenance}\\
+            Where did this data come from?\\
+            \textit{Can we trace and trust its origin?}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Data Currency: Time-Based Trust}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{When was this data collected?}
+
+            \vspace{2mm}
+
+            Data has a ``shelf life'' that varies by domain:
+
+            \vspace{2mm}
+
+            \begin{itemize}
+                \item \textbf{Stock prices}: Minutes to hours
+                \item \textbf{News/events}: Hours to days
+                \item \textbf{Product catalogs}: Days to weeks
+                \item \textbf{Legal/regulatory}: Weeks to months
+                \item \textbf{Scientific knowledge}: Months to years
+            \end{itemize}
+
+            \vspace{3mm}
+
+            \begin{block}{Key Question}
+                Is your training data still valid? Is your context data current?
+            \end{block}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{alertblock}{GenAI Risks}
+                \begin{itemize}
+                    \item Models trained on outdated data give outdated answers
+                    \item RAG with stale documents misleads users
+                    \item No timestamp = no way to assess trust
+                \end{itemize}
+            \end{alertblock}
+
+            \vspace{2mm}
+
+            \textit{Always know when your data was captured and when it expires.}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Global Privacy Regulations}
@@ -224,6 +792,7 @@
 %% SECTION 2: PRODUCT DEVELOPMENT
 %% ============================================================================
 
+
 \section{Product Development}
 
 {
@@ -250,6 +819,72 @@
     GenAI has entered the ``Trough of Disillusionment''
 \end{frame}
 }
+
+\begin{frame}{How To Interpret A Hype Cycle}
+    \centering
+    \vspace{-2mm}
+
+    \includegraphics[height=0.85\textheight]{assets/stock/gartner-hype-cycle.png}
+\end{frame}
+
+\begin{frame}{Understanding the Hype Cycle}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{Five Phases of Technology Adoption:}
+
+            \vspace{2mm}
+
+            \begin{enumerate}
+                \item \textbf{Innovation Trigger}\\
+                      {\small Breakthrough generates excitement}
+
+                \item \textbf{Peak of Inflated Expectations}\\
+                      {\small Maximum hype, unrealistic promises}
+
+                \item \textbf{Trough of Disillusionment}\\
+                      {\small Reality sets in, failures mount}
+
+                \item \textbf{Slope of Enlightenment}\\
+                      {\small Practical understanding emerges}
+
+                \item \textbf{Plateau of Productivity}\\
+                      {\small Mainstream adoption, real value}
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{alertblock}{Where Is GenAI Now?}
+                In 2024, GenAI was at the Peak.
+
+                \vspace{2mm}
+
+                In 2025, GenAI has descended into the \textbf{Trough of Disillusionment}.
+
+                \vspace{2mm}
+
+                This is \textit{normal}---not failure.
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Quick Poll}
+    \centering
+    \vspace{5mm}
+
+    {\Large\textbf{Why do you think AI adoption lags expectations?}}
+
+    \vspace{8mm}
+
+    {\large Go to \textbf{menti.com} and enter the code}
+
+    \vspace{5mm}
+
+    {\Huge\textbf{[CODE]}}
+
+    \vspace{5mm}
+
+    \textit{Share a word or short phrase.}
+\end{frame}
 
 \begin{frame}{Why Traditional Project Management Fails}
     \begin{columns}[c]
@@ -377,7 +1012,7 @@
         \item \textbf{Fine-Tune}: \$10K--\$1M; weeks to months\\
               \textit{Best for: Domain-specific tasks}
 
-        \item \textbf{RAG}: \$10K--\$100K; weeks\\
+        \item \textbf{RAG (Retrieval-Augmented Generation)}: \$10K--\$100K; weeks\\
               \textit{Best for: Current/proprietary information}
 
         \item \textbf{Prompt Engineering}: \$1K--\$10K; days to weeks\\
@@ -386,6 +1021,27 @@
         \item \textbf{Buy SaaS}: Variable; days\\
               \textit{Best for: Non-differentiating capabilities}
     \end{itemize}
+\end{frame}
+
+%% --- Menti: Build vs Buy ---
+
+\begin{frame}{Quick Poll}
+    \centering
+    \vspace{5mm}
+
+    {\Large\textbf{Which approach is your organization\\most likely to use?}}
+
+    \vspace{8mm}
+
+    {\large Go to \textbf{menti.com} and enter the code}
+
+    \vspace{5mm}
+
+    {\Huge\textbf{[CODE]}}
+
+    \vspace{5mm}
+
+    \textit{Build / Fine-Tune / RAG / Prompt Engineering / Buy SaaS}
 \end{frame}
 
 \begin{frame}{Success Metrics}
