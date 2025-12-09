@@ -40,9 +40,11 @@
 
     \hdxtopicitem{2}{AI Security}{Threats, vulnerabilities, and protection}
 
-    \hdxtopicitem{3}{Strategic Considerations}{Maturity, vendors, and talent}
+    \hdxtopicitem{3}{Product Implementation}{Deployment, monitoring, and scaling}
 
-    \vspace{5mm}
+    \hdxtopicitem{4}{Strategic Considerations}{Maturity, vendors, and talent}
+
+    \vspace{3mm}
 
     {\small\textit{Duration: 2 hours}}
 \end{frame}
@@ -757,7 +759,199 @@
 \end{frame}
 
 %% ============================================================================
-%% SECTION 3: STRATEGIC CONSIDERATIONS
+%% SECTION 3: PRODUCT IMPLEMENTATION
+%% ============================================================================
+
+\section{Product Implementation}
+
+{
+\hdxpurplebg
+\begin{frame}{From Pilot to Production}
+    \centering
+    \vspace{10mm}
+
+    {\Large\bfseries
+    ``The gap between a working demo\\[3mm]
+    and a production system is where most AI projects die.''}
+
+    \vspace{10mm}
+
+    90\% of AI models never make it to production.\\
+    Of those that do, 85\% fail to deliver expected value.
+\end{frame}
+}
+
+\begin{frame}{Implementation Patterns}
+    \begin{enumerate}
+        \item \textbf{Co-Pilot / Augmentation}\\
+              AI assists; humans decide. \textit{Best for: High-stakes, building trust}
+
+        \item \textbf{Automation with Exceptions}\\
+              AI handles routine; humans handle exceptions. \textit{Best for: High-volume}
+
+        \item \textbf{Full Automation}\\
+              AI autonomous with monitoring. \textit{Best for: Low-stakes, speed critical}
+
+        \item \textbf{Internal Tool}\\
+              AI assists employees only. \textit{Best for: Building capability, lower risk}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Deployment Strategies}
+    \begin{itemize}
+        \item \textbf{Shadow Mode}: AI runs alongside humans, outputs compared but not used
+              \begin{itemize}
+                  \item Validates performance before going live
+                  \item Builds confidence and identifies edge cases
+              \end{itemize}
+
+        \item \textbf{Canary Deployment}: Roll out to small percentage (1--5\%) first
+              \begin{itemize}
+                  \item Limits blast radius of failures
+                  \item Enables real-world performance data
+              \end{itemize}
+
+        \item \textbf{Blue-Green}: Maintain parallel systems, instant rollback capability
+              \begin{itemize}
+                  \item Critical for high-availability requirements
+                  \item Higher infrastructure cost
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Four-Layer Monitoring Framework}
+    \begin{enumerate}
+        \item \textbf{Infrastructure}: Latency, error rates, throughput, cost per query
+
+        \item \textbf{Model Performance}: Accuracy, hallucination rate, drift detection
+
+        \item \textbf{Business Metrics}: Adoption, task completion, user satisfaction
+
+        \item \textbf{Risk Indicators}: Incidents, near-misses, compliance violations
+    \end{enumerate}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{Critical Principle}
+        You can't improve what you don't measure. Instrument from day one.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Model Drift \& Retraining}
+    \textbf{Types of Drift:}
+    \begin{itemize}
+        \item \textbf{Data Drift}: Input distribution changes over time
+        \item \textbf{Concept Drift}: Relationship between inputs and outputs changes
+        \item \textbf{Model Decay}: Performance degrades as world changes
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \textbf{Retraining Triggers:}
+    \begin{itemize}
+        \item Performance drops below threshold
+        \item Significant data distribution shift detected
+        \item Scheduled intervals (weekly, monthly)
+        \item Major business or regulatory changes
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Scaling Considerations}
+    \hdxtwocolumn{
+        \textbf{Technical Scaling}
+        \begin{itemize}
+            \item GPU/TPU capacity planning
+            \item Load balancing strategies
+            \item Caching and optimization
+            \item Multi-region deployment
+            \item Cost optimization (spot instances)
+        \end{itemize}
+    }{
+        \textbf{Organizational Scaling}
+        \begin{itemize}
+            \item Center of Excellence model
+            \item Federated vs. centralized
+            \item Reusable components/APIs
+            \item Knowledge sharing
+            \item Governance at scale
+        \end{itemize}
+    }
+\end{frame}
+
+\begin{frame}{User Adoption \& Change Management}
+    \textbf{The Human Factor:}
+    \begin{itemize}
+        \item 70\% of AI project failures are due to organizational factors, not technology
+
+        \item Users must trust the AI before they'll use it
+
+        \item Fear of job displacement creates resistance
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \textbf{Success Factors:}
+    \begin{enumerate}
+        \item Early user involvement in design
+        \item Transparent communication about AI capabilities and limits
+        \item Training and support programs
+        \item Clear escalation paths when AI fails
+        \item Celebrate wins and share success stories
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Feedback Loops}
+    \centering
+
+    \begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
+        \definecolor{hdxpurple}{RGB}{102,51,153}
+        \definecolor{hdxgreen}{RGB}{107,142,35}
+
+        % Boxes
+        \node[draw=hdxpurple, fill=hdxpurple!20, minimum width=2.5cm, minimum height=1cm, rounded corners=3pt] (users) at (-4,0) {Users};
+        \node[draw=hdxpurple, fill=hdxpurple!20, minimum width=2.5cm, minimum height=1cm, rounded corners=3pt] (ai) at (0,0) {AI System};
+        \node[draw=hdxpurple, fill=hdxpurple!20, minimum width=2.5cm, minimum height=1cm, rounded corners=3pt] (analytics) at (4,0) {Analytics};
+        \node[draw=hdxgreen, fill=hdxgreen!20, minimum width=2.5cm, minimum height=1cm, rounded corners=3pt] (improve) at (0,-2.5) {Improvements};
+
+        % Arrows
+        \draw[->, thick] (users) -- (ai) node[midway, above] {Inputs};
+        \draw[->, thick] (ai) -- (analytics) node[midway, above] {Outputs};
+        \draw[->, thick] (analytics) -- (improve) node[midway, right] {Insights};
+        \draw[->, thick] (improve) -- (ai) node[midway, left] {Updates};
+        \draw[->, thick, dashed] (users) to[bend right=30] node[midway, below] {Feedback} (improve);
+    \end{tikzpicture}
+
+    \vspace{3mm}
+
+    \textbf{Key}: Explicit feedback (thumbs up/down) + implicit signals (task completion, time spent, escalations)
+\end{frame}
+
+\begin{frame}{Production Checklist}
+    \hdxtwocolumn{
+        \textbf{Before Launch}
+        \begin{itemize}
+            \item[\ding{113}] Security review passed
+            \item[\ding{113}] Ethics review passed
+            \item[\ding{113}] Performance benchmarks met
+            \item[\ding{113}] Monitoring instrumented
+            \item[\ding{113}] Rollback plan tested
+            \item[\ding{113}] Documentation complete
+        \end{itemize}
+    }{
+        \textbf{Ongoing Operations}
+        \begin{itemize}
+            \item[\ding{113}] Daily performance review
+            \item[\ding{113}] Weekly drift analysis
+            \item[\ding{113}] Monthly cost review
+            \item[\ding{113}] Quarterly bias audit
+            \item[\ding{113}] Incident response drills
+            \item[\ding{113}] User feedback analysis
+        \end{itemize}
+    }
+\end{frame}
+
+%% ============================================================================
+%% SECTION 4: STRATEGIC CONSIDERATIONS
 %% ============================================================================
 
 \section{Strategic Considerations}
@@ -879,11 +1073,11 @@
 \hdxpurplebg
 \begin{frame}{Part 2 Key Takeaways}
     \centering
-    \vspace{5mm}
+    \vspace{3mm}
 
     {\Large\bfseries Summary}
 
-    \vspace{8mm}
+    \vspace{5mm}
 
     \begin{minipage}{0.9\textwidth}
         \begin{enumerate}
@@ -893,11 +1087,11 @@
 
             \item \textbf{Defense in Depth}: No single control is sufficient
 
-            \item \textbf{Prompt Injection}: The critical threat with no complete solution
+            \item \textbf{Demo to Production}: 90\% of models never make it --- plan for the gap
 
-            \item \textbf{Governance Matters}: Three lines of defense
+            \item \textbf{Monitor Everything}: Drift, performance, cost, and user adoption
 
-            \item \textbf{People are Hardest}: Invest in talent and culture
+            \item \textbf{People are Hardest}: 70\% of failures are organizational, not technical
         \end{enumerate}
     \end{minipage}
 \end{frame}
