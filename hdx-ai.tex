@@ -438,22 +438,15 @@
     \centering
 
     \begin{tikzpicture}
-        % Define the HDX purple color
         \definecolor{hdxpurple}{RGB}{102,51,153}
 
-        % All circles same size: 1.8cm diameter
-        % Triangle layout with equal spacing
+        % All circles exactly 1.5cm diameter, spaced apart
+        % Equilateral triangle with 2.2cm between centers
 
-        % Top circle - Confidentiality (at apex of triangle)
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, font=\scriptsize\bfseries] (conf) at (0,1.6) {Confidentiality};
+        \node[circle, fill=hdxpurple, text=white, minimum size=1.5cm, font=\tiny\bfseries] (conf) at (0,1.3) {Confidentiality};
+        \node[circle, fill=hdxpurple, text=white, minimum size=1.5cm, font=\tiny\bfseries] (int) at (-1.5,-0.7) {Integrity};
+        \node[circle, fill=hdxpurple, text=white, minimum size=1.5cm, font=\tiny\bfseries] (avail) at (1.5,-0.7) {Availability};
 
-        % Bottom left circle - Integrity
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, font=\scriptsize\bfseries] (int) at (-1.8,-0.8) {Integrity};
-
-        % Bottom right circle - Availability
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.8cm, font=\scriptsize\bfseries] (avail) at (1.8,-0.8) {Availability};
-
-        % Connecting lines
         \draw[thick, hdxpurple] (conf) -- (int);
         \draw[thick, hdxpurple] (int) -- (avail);
         \draw[thick, hdxpurple] (avail) -- (conf);
@@ -471,33 +464,31 @@
         \definecolor{hdxpurple}{RGB}{102,51,153}
         \definecolor{hdxgreen}{RGB}{107,142,35}
 
-        % Safety in center (larger, emphasized as most important)
-        \node[circle, fill=hdxgreen, text=white, minimum size=2.2cm, font=\small\bfseries] (safe) at (0,0) {Safety};
+        % Diamond layout: Safety at center, CIA at four cardinal points
+        % All same size (1.5cm), Safety highlighted by color only
 
-        % CIA elements orbit around Safety (smaller circles)
-        % Top - Confidentiality
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.6cm, font=\scriptsize\bfseries] (conf) at (0,2.2) {Confidentiality};
+        % Safety in center
+        \node[circle, fill=hdxgreen, text=white, minimum size=1.5cm, font=\tiny\bfseries] (safe) at (0,0) {Safety};
 
-        % Bottom left - Integrity
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.6cm, font=\scriptsize\bfseries] (int) at (-1.9,-1.1) {Integrity};
+        % CIA at cardinal points, well spaced from center
+        \node[circle, fill=hdxpurple, text=white, minimum size=1.5cm, font=\tiny\bfseries] (conf) at (0,2.5) {Confidentiality};
+        \node[circle, fill=hdxpurple, text=white, minimum size=1.5cm, font=\tiny\bfseries] (int) at (-2.5,0) {Integrity};
+        \node[circle, fill=hdxpurple, text=white, minimum size=1.5cm, font=\tiny\bfseries] (avail) at (2.5,0) {Availability};
 
-        % Bottom right - Availability
-        \node[circle, fill=hdxpurple, text=white, minimum size=1.6cm, font=\scriptsize\bfseries] (avail) at (1.9,-1.1) {Availability};
-
-        % Connecting lines from CIA to Safety (Safety is central)
+        % Lines from CIA to Safety (emphasized)
         \draw[thick, hdxgreen] (conf) -- (safe);
         \draw[thick, hdxgreen] (int) -- (safe);
         \draw[thick, hdxgreen] (avail) -- (safe);
 
-        % CIA interconnections (lighter)
-        \draw[thick, hdxpurple!60] (conf) -- (int);
-        \draw[thick, hdxpurple!60] (int) -- (avail);
-        \draw[thick, hdxpurple!60] (avail) -- (conf);
+        % CIA interconnections (lighter, outer edges)
+        \draw[thick, hdxpurple!50] (conf) -- (int);
+        \draw[thick, hdxpurple!50] (conf) -- (avail);
+        \draw[thick, hdxpurple!50] (int) -- (avail);
     \end{tikzpicture}
 
     \vspace{2mm}
 
-    {\small In Operational Technology (OT) and AI systems, \textbf{Safety} becomes central:\\preventing harm to people, property, and the environment.}
+    {\small In OT and AI systems, \textbf{Safety} becomes central:\\preventing harm to people, property, and the environment.}
 \end{frame}
 
 \begin{frame}{Confidentiality}
