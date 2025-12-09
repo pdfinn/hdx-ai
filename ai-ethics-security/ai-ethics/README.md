@@ -58,7 +58,8 @@ This directory contains research on ethical considerations in artificial intelli
 
 ## Research Files
 
-*Research documents will be added to this directory as they are developed.*
+### Foundational Frameworks
+- **[ripstein-harm-wrong-framework.md](ripstein-harm-wrong-framework.md)** - Adapts Arthur Ripstein's Kantian distinction between "harm" and "wrong" from tort law to clarify the difference between AI safety (preventing harm from malfunction) and AI ethics (preventing wrongs even when systems work as designed).
 
 ## Resources
 

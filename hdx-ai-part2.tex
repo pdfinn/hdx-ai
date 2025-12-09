@@ -41,12 +41,6 @@
     \hdxtopicitem{2}{AI Security}{Threats, vulnerabilities, and protection}
 
     \hdxtopicitem{3}{Product Implementation}{Deployment, monitoring, and scaling}
-
-    \hdxtopicitem{4}{Strategic Considerations}{Maturity, vendors, and talent}
-
-    \vspace{3mm}
-
-    {\small\textit{Duration: 2 hours}}
 \end{frame}
 
 %% ============================================================================
@@ -55,33 +49,175 @@
 
 \section{AI Ethics}
 
-%% --- Section opener with image ---
+%% --- Menti: Opening engagement ---
 
-\begin{frame}{AI Ethics}
+\begin{frame}{Let's Start with a Question}
+    \centering
+    \vspace{5mm}
+
+    {\Large\textbf{What do you think ``ethics'' means?}}
+
+    \vspace{8mm}
+
+    {\large Go to \textbf{menti.com} and enter the code}
+
+    \vspace{5mm}
+
+    {\Huge\textbf{[CODE]}}
+
+    \vspace{8mm}
+
+    {\textit{Share a word or short phrase that captures your understanding.}}
+\end{frame}
+
+%% --- Philosophical opening: What is ethics? ---
+
+\begin{frame}{What Is Ethics?}
     \begin{columns}[c]
         \begin{column}{0.55\textwidth}
-            \textbf{Why Ethics Is a Business Imperative}
+            \textbf{A Starting Question}
 
             \vspace{2mm}
 
+            Ethics is not:
             \begin{itemize}
-                \setlength{\itemsep}{1pt}
-                \item \textbf{Reputation}: Brand damage vs. trust premium
-                \item \textbf{Regulatory}: Fines vs. favorable treatment
-                \item \textbf{Legal}: Lawsuits vs. reduced liability
-                \item \textbf{Talent}: Recruiting challenges vs. employer of choice
+                \item Compliance (following rules)
+                \item Risk management (avoiding liability)
+                \item Public relations (looking good)
             \end{itemize}
 
             \vspace{2mm}
 
-            \begin{alertblock}{Key Insight}
-                The reputational half-life of AI ethics failures is measured in years.
-            \end{alertblock}
+            Ethics \textit{is}:
+            \begin{itemize}
+                \item Determining what we \textit{ought} to do
+                \item Asking: what do we owe each other?
+                \item Distinguishing right from wrong
+            \end{itemize}
         \end{column}
         \begin{column}{0.4\textwidth}
             \includegraphics[width=\textwidth]{assets/stock/ethics-balance.jpg}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}{The Problem with ``AI Ethics''}
+    \textbf{The term is used to mean many different things:}
+
+    \vspace{3mm}
+
+    \begin{itemize}
+        \item \textbf{Safety}: The system doesn't malfunction or cause accidents
+        \item \textbf{Fairness}: The system doesn't discriminate
+        \item \textbf{Privacy}: The system respects data boundaries
+        \item \textbf{Transparency}: Users understand how decisions are made
+        \item \textbf{Accountability}: Someone is responsible when things go wrong
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{The Challenge}
+        Without clear distinctions, ``ethics'' becomes a vague umbrella that obscures more than it reveals. We need sharper tools.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Safety vs. Ethics: A Key Distinction}
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Harm} (Safety concern)
+            \begin{itemize}
+                \item System malfunctions
+                \item Causes damage through failure
+                \item Engineering problem
+                \item Fix: better testing, monitoring
+            \end{itemize}
+
+            \vspace{2mm}
+
+            \textit{Example}: Self-driving car crashes due to sensor failure
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Wrong} (Ethics concern)
+            \begin{itemize}
+                \item System works as designed
+                \item Violates rights or dignity
+                \item Governance problem
+                \item Fix: constrain purpose, redesign
+            \end{itemize}
+
+            \vspace{2mm}
+
+            \textit{Example}: Hiring AI discriminates---accurately
+        \end{column}
+    \end{columns}
+
+    \vspace{3mm}
+
+    \begin{block}{Key Insight}
+        A system can be \textbf{safe} (doesn't malfunction) yet \textbf{unethical} (wrongs people by design).
+    \end{block}
+\end{frame}
+
+\begin{frame}{When Harm and Wrong Overlap}
+    \textbf{The hiring algorithm case:}
+
+    \vspace{3mm}
+
+    A candidate is rejected by an AI system that systematically down-ranks people based on protected characteristics.
+
+    \vspace{3mm}
+
+    \begin{itemize}
+        \item \textbf{Harm}: Lost job opportunity, economic damage---but this happens for legitimate reasons too
+        \item \textbf{Wrong}: The system \textit{used} their characteristics against them, violating their right to be evaluated as an individual
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{The Point}
+        The harm could be incidental. The \textbf{wrong} is what makes it ethically objectionable. This distinction matters for how we respond.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Why Sharp Distinctions Matter}
+    \textbf{Different problems require different solutions:}
+
+    \vspace{3mm}
+
+    \begin{tabular}{p{3cm}p{5cm}p{5cm}}
+        & \textbf{Safety Failure} & \textbf{Ethics Failure} \\
+        \hline
+        \textbf{Question} & Does it work? & Should it exist? \\
+        \textbf{Response} & Engineering fix & Governance intervention \\
+        \textbf{Expertise} & Technical teams & Cross-functional + legal \\
+        \textbf{Risk profile} & Often insurable & Existential/reputational \\
+        \textbf{Public perception} & ``The system broke'' & ``They designed it this way'' \\
+    \end{tabular}
+
+    \vspace{4mm}
+
+    Conflating safety and ethics leads to inadequate responses to both.
+\end{frame}
+
+%% --- Transition to business case ---
+
+\begin{frame}{AI Ethics as Business Imperative}
+    \textbf{With this framework in mind:}
+
+    \vspace{3mm}
+
+    \begin{itemize}
+        \item \textbf{Reputation}: Ethics failures suggest values problems
+        \item \textbf{Regulatory}: Laws increasingly target \textit{wrongs}, not just harms
+        \item \textbf{Legal}: Liability for discrimination, not just malfunction
+        \item \textbf{Talent}: Engineers want to build systems that don't \textit{wrong} people
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{Key Insight}
+        The reputational half-life of AI ethics failures is measured in years.
+    \end{alertblock}
 \end{frame}
 
 \begin{frame}{High-Profile AI Ethics Failures}
@@ -187,20 +323,22 @@
     \begin{columns}[c]
         \begin{column}{0.55\textwidth}
             \begin{enumerate}
-                \item \textbf{Human-in-the-Loop}\\
-                      Human approves every decision
+                \item \textbf{Human-in-the-Loop (HITL)}\\
+                      Human approves every decision\\
+                      \textit{High control, low throughput}
 
-                \item \textbf{Human-on-the-Loop}\\
-                      Human monitors and can intervene
+                \item \textbf{Human-on-the-Loop (HOTL)}\\
+                      Human monitors and intervenes on exceptions\\
+                      \textit{Lower control, high throughput}
 
                 \item \textbf{Human-out-of-Loop}\\
                       Fully automated with auditing
             \end{enumerate}
 
-            \vspace{3mm}
+            \vspace{2mm}
 
-            \begin{block}{The Automation Paradox}
-                As AI becomes more capable, humans become less capable of overseeing it.
+            \begin{block}{Key Question}
+                What is the cost of a wrong decision?
             \end{block}
         \end{column}
         \begin{column}{0.4\textwidth}
@@ -645,6 +783,80 @@
     \end{block}
 \end{frame}
 
+%% --- CTF: Hands-on jailbreak challenge ---
+
+\begin{frame}{Challenge: Can You Jailbreak an AI?}
+    \centering
+
+    {\Large\textbf{Capture the Flag: Prompt Injection}}
+
+    \vspace{4mm}
+
+    \textbf{Your mission}: Get the AI to explain how to rob a bank.
+
+    \vspace{3mm}
+
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{Rules:}
+            \begin{enumerate}
+                \item Go to \textbf{chat.mistral.ai}
+                \item Try to bypass the safety guardrails
+                \item Post your \textit{result} in the chat (not your prompt!)
+                \item Keep your winning prompt secret
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \textbf{Time: 5 minutes}
+
+            \vspace{3mm}
+
+            \textit{Afterwards: We'll discuss what worked and why.}
+        \end{column}
+    \end{columns}
+
+    \vspace{4mm}
+
+    \begin{alertblock}{Why Mistral?}
+        Mistral's terms permit security research. This demonstrates real vulnerability.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Jailbreak Debrief}
+    \textbf{What techniques did you try?}
+
+    \vspace{3mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Common Jailbreak Patterns:}
+            \begin{itemize}
+                \item Role-playing / persona
+                \item Hypothetical framing
+                \item Step-by-step decomposition
+                \item Encoding / obfuscation
+                \item Authority claims
+                \item ``Ignore previous instructions''
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Why They Work:}
+            \begin{itemize}
+                \item Models are trained to be helpful
+                \item Context manipulation
+                \item Safety training has gaps
+                \item Adversarial prompts exploit edge cases
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \vspace{3mm}
+
+    \begin{block}{Key Insight}
+        If you can do this in 5 minutes, so can attackers. Defense in depth is essential.
+    \end{block}
+\end{frame}
+
 \begin{frame}{Agentic AI: New Security Frontier}
     \begin{columns}[c]
         \begin{column}{0.55\textwidth}
@@ -757,6 +969,38 @@
 
         \item \textbf{Recovery \& Learning}: Weeks --- review, improve
     \end{enumerate}
+\end{frame}
+
+%% --- Menti: Security reflection ---
+
+\begin{frame}{Quick Poll}
+    \centering
+
+    {\Large\textbf{What is your organization's biggest AI security concern?}}
+
+    \vspace{4mm}
+
+    {\large Go to \textbf{menti.com} and enter the code:}
+    \quad
+    {\Huge\textbf{[CODE]}}
+
+    \vspace{4mm}
+
+    \begin{columns}[c]
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item Data leakage / privacy
+                \item Prompt injection attacks
+                \item Model reliability
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item Compliance and audit
+                \item We haven't assessed yet
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 %% ============================================================================
@@ -1143,6 +1387,27 @@
 
         \item Your GenAI causes customer harm while working as designed. Who is accountable?
     \end{enumerate}
+\end{frame}
+
+%% --- Menti: Closing reflection ---
+
+\begin{frame}{One Thing to Take Away}
+    \centering
+    \vspace{5mm}
+
+    {\Large\textbf{What is one action you will take after this session?}}
+
+    \vspace{8mm}
+
+    {\large Go to \textbf{menti.com} and enter the code}
+
+    \vspace{5mm}
+
+    {\Huge\textbf{[CODE]}}
+
+    \vspace{8mm}
+
+    {\textit{Share your commitment with the group.}}
 \end{frame}
 
 %% ============================================================================
