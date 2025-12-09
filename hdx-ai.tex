@@ -437,18 +437,22 @@
 \begin{frame}{The CIA Triad: Foundation of Information Security}
     \centering
 
-    \begin{tikzpicture}[scale=0.7]
+    \begin{tikzpicture}
         % Define the HDX purple color
         \definecolor{hdxpurple}{RGB}{102,51,153}
 
-        % Top circle - Confidentiality
-        \node[circle, fill=hdxpurple, text=white, minimum size=3.2cm, font=\normalsize\bfseries] (conf) at (0,2) {Confidentiality};
+        % Circle radius = 1.1cm, so diameter = 2.2cm
+        % For non-overlapping: center distance > 2*radius = 2.2cm
+        % Using 2.4cm separation for slight gap
+
+        % Top circle - Confidentiality (at apex of triangle)
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (conf) at (0,1.4) {Confidentiality};
 
         % Bottom left circle - Integrity
-        \node[circle, fill=hdxpurple, text=white, minimum size=3.2cm, font=\normalsize\bfseries] (int) at (-2.8,-1.2) {Integrity};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (int) at (-2.1,-1.1) {Integrity};
 
         % Bottom right circle - Availability
-        \node[circle, fill=hdxpurple, text=white, minimum size=3.2cm, font=\normalsize\bfseries] (avail) at (2.8,-1.2) {Availability};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (avail) at (2.1,-1.1) {Availability};
 
         % Connecting lines
         \draw[thick, hdxpurple] (conf) -- (int);
@@ -464,28 +468,27 @@
 \begin{frame}{The OT Security Tetrad: Adding Safety}
     \centering
 
-    \begin{tikzpicture}[scale=0.5]
+    \begin{tikzpicture}
         \definecolor{hdxpurple}{RGB}{102,51,153}
         \definecolor{hdxgreen}{RGB}{107,142,35}
 
-        % Calculate spacing to prevent overlap
-        % With minimum size=2.2cm and scale=0.5, effective radius ~0.55cm
-        % Need separation > 2*radius = 1.1cm scaled, so use 3.5 units at scale 0.5
+        % Circle diameter = 2cm, radius = 1cm
+        % For non-overlapping diamond: need center distance > 2cm
+        % Using 2.3cm between adjacent circles
 
-        % Diamond arrangement with proper spacing
         % Top - Confidentiality
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (conf) at (0,3.5) {Confidentiality};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2cm, font=\small\bfseries] (conf) at (0,2.3) {Confidentiality};
 
         % Left - Integrity
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (int) at (-3.5,0) {Integrity};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2cm, font=\small\bfseries] (int) at (-2.3,0) {Integrity};
 
         % Right - Availability
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.2cm, font=\small\bfseries] (avail) at (3.5,0) {Availability};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2cm, font=\small\bfseries] (avail) at (2.3,0) {Availability};
 
         % Bottom - Safety (highlighted)
-        \node[circle, fill=hdxgreen, text=white, minimum size=2.2cm, font=\small\bfseries] (safe) at (0,-3.5) {Safety};
+        \node[circle, fill=hdxgreen, text=white, minimum size=2cm, font=\small\bfseries] (safe) at (0,-2.3) {Safety};
 
-        % Connecting lines (drawn behind nodes)
+        % Connecting lines
         \draw[thick, hdxpurple] (conf) -- (int);
         \draw[thick, hdxpurple] (conf) -- (avail);
         \draw[thick, hdxpurple] (int) -- (avail);
