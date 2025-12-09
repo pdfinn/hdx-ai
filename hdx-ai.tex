@@ -466,21 +466,29 @@
 
         % All circles 2.4cm - larger to fit text without truncation
         % Safety in center, CIA at cardinal points
+        % Draw lines FIRST, then Safety node on top
 
-        \node[circle, fill=hdxgreen, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center] (safe) at (0,0) {Safety};
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center, text width=2cm] (conf) at (0,2.8) {Confiden-\\tiality};
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center] (int) at (-2.8,0) {Integrity};
-        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center, text width=2cm] (avail) at (2.8,0) {Avail-\\ability};
+        % Define node positions first (without drawing)
+        \coordinate (safe-pos) at (0,0);
+        \coordinate (conf-pos) at (0,2.8);
+        \coordinate (int-pos) at (-2.8,0);
+        \coordinate (avail-pos) at (2.8,0);
 
-        % Lines from CIA to Safety (emphasized)
-        \draw[thick, hdxgreen] (conf) -- (safe);
-        \draw[thick, hdxgreen] (int) -- (safe);
-        \draw[thick, hdxgreen] (avail) -- (safe);
+        % Draw CIA nodes first
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center, text width=2cm] (conf) at (conf-pos) {Confiden-\\tiality};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center] (int) at (int-pos) {Integrity};
+        \node[circle, fill=hdxpurple, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center, text width=2cm] (avail) at (avail-pos) {Avail-\\ability};
 
-        % CIA interconnections (lighter, outer edges)
+        % Draw all lines
+        \draw[thick, hdxgreen] (conf) -- (safe-pos);
+        \draw[thick, hdxgreen] (int) -- (safe-pos);
+        \draw[thick, hdxgreen] (avail) -- (safe-pos);
         \draw[thick, hdxpurple!50] (conf) -- (int);
         \draw[thick, hdxpurple!50] (conf) -- (avail);
         \draw[thick, hdxpurple!50] (int) -- (avail);
+
+        % Draw Safety node LAST so it's on top of lines
+        \node[circle, fill=hdxgreen, text=white, minimum size=2.4cm, inner sep=0pt, font=\scriptsize\bfseries, align=center] (safe) at (safe-pos) {Safety};
     \end{tikzpicture}
 
     \vspace{2mm}
