@@ -36,9 +36,23 @@
 %% ============================================================================
 
 \begin{frame}{Today's Agenda}
-    \hdxtopicitem{1}{Data Foundations}{How GenAI works, quality, currency, and governance}
+    \textbf{Part 1: Data Foundations}
+    \begin{itemize}
+        \item How GenAI works: From GOFAI to neural networks
+        \item Training, weights, and the ``black box'' problem
+        \item Data quality, currency, and the 60--80\% rule
+        \item Privacy regulations and governance frameworks
+    \end{itemize}
 
-    \hdxtopicitem{2}{Product Development}{Lifecycle, deployment, and ROI}
+    \vspace{5mm}
+
+    \textbf{Part 2: Product Development}
+    \begin{itemize}
+        \item The GenAI hype cycle: Where we are now
+        \item Project lifecycle and phase gates
+        \item Build vs. buy decisions
+        \item Success metrics and ROI reality
+    \end{itemize}
 \end{frame}
 
 %% ============================================================================
@@ -46,6 +60,36 @@
 %% ============================================================================
 
 \section{Data Foundations}
+
+%% --- Terminology: AI vs GenAI ---
+
+\begin{frame}{A Note on Terminology}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{AI (Artificial Intelligence)}\\
+            The broad field of creating systems that perform tasks requiring human intelligence.
+
+            \vspace{3mm}
+
+            \textbf{Machine Learning (ML)}\\
+            AI systems that learn patterns from data rather than following explicit rules.
+
+            \vspace{3mm}
+
+            \textbf{Generative AI (GenAI)}\\
+            ML systems that \textit{create} new content: text, images, code, audio, video.
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{block}{In This Presentation}
+                We use \textbf{``AI''} when discussing principles that apply broadly (e.g., bias, governance).
+
+                \vspace{2mm}
+
+                We use \textbf{``GenAI''} when discussing capabilities specific to generative systems (e.g., LLMs, hallucinations).
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
 
 %% --- Menti: Opening engagement ---
 
@@ -253,7 +297,9 @@
 
             \vspace{3mm}
 
-            \textbf{GPT-4 has approximately 1.7 trillion dials.}
+            \textbf{GPT-4 reportedly has over 1 trillion parameters.}
+
+            {\tiny (Exact architecture is proprietary)}
         \end{column}
         \begin{column}{0.4\textwidth}
             \begin{block}{The Black Box Problem}
@@ -347,6 +393,39 @@
     {\Huge\textbf{[CODE]}}
 \end{frame}
 
+\begin{frame}{What We Just Observed}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{Key Takeaways from the Exercise:}
+
+            \vspace{3mm}
+
+            \begin{enumerate}
+                \item \textbf{Different models, different answers}\\
+                      Even leading AI systems disagree
+
+                \item \textbf{Confidence without accuracy}\\
+                      AI often sounds certain even when wrong
+
+                \item \textbf{Edge cases expose limits}\\
+                      Ambiguous inputs reveal brittleness
+
+                \item \textbf{``Close enough'' isn't always enough}\\
+                      Some applications require precision
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.4\textwidth}
+            \begin{alertblock}{The Lesson}
+                GenAI excels at ``approximately right'' but struggles with ``exactly right.''
+
+                \vspace{2mm}
+
+                This has profound implications for how we deploy and validate AI systems.
+            \end{alertblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
 \begin{frame}{Why Results Vary: Probabilistic, Not Deterministic}
     \textbf{Traditional Software:}
     \begin{itemize}
@@ -369,6 +448,62 @@
     \begin{alertblock}{Implication}
         You cannot test GenAI like traditional software. You need statistical evaluation over many samples.
     \end{alertblock}
+\end{frame}
+
+\begin{frame}{Hallucinations: When AI Makes Things Up}
+    \textbf{What are hallucinations?}
+    \begin{itemize}
+        \item AI generates confident, plausible-sounding text that is \textbf{factually false}
+        \item Not a bug---a fundamental feature of how LLMs work
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \textbf{Why do they happen?}
+    \begin{itemize}
+        \item LLMs predict the \textit{next most likely word}, not the \textit{true} word
+        \item They have no internal model of truth---only patterns in training data
+        \item They're designed to always give an answer, even when they shouldn't
+    \end{itemize}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{The Danger}
+        Hallucinations are delivered with the same confidence as facts. Users often can't tell the difference without independent verification.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Mitigating Hallucinations}
+    \textbf{There is no complete solution, but these help:}
+
+    \vspace{3mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Technical Approaches}
+            \begin{itemize}
+                \item \textbf{RAG}: Ground responses in retrieved documents
+                \item \textbf{Fine-tuning}: Train on verified domain data
+                \item \textbf{Temperature}: Lower values reduce creativity/risk
+                \item \textbf{Structured outputs}: Constrain response format
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Process Approaches}
+            \begin{itemize}
+                \item \textbf{Human review}: Verify critical outputs
+                \item \textbf{Confidence thresholds}: Flag uncertain responses
+                \item \textbf{Source citation}: Require references
+                \item \textbf{Use case selection}: Avoid high-stakes facts
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \vspace{3mm}
+
+    \begin{block}{Key Principle}
+        Design systems assuming hallucinations will occur. The question is how to detect and handle them.
+    \end{block}
 \end{frame}
 
 \begin{frame}{RLHF: Teaching AI to Be Helpful}
@@ -529,6 +664,10 @@
 
             \begin{alertblock}{Reality Check}
                 Fortune 500 expected 4 months for GenAI. Actual: 15 months. Root cause: Data readiness.
+
+                \vspace{1mm}
+
+                {\tiny Source: Industry case study analysis}
             \end{alertblock}
         \end{column}
         \begin{column}{0.4\textwidth}
@@ -788,6 +927,36 @@
     \textbf{Scale}: 350+ LLMs filed. 1.57M AI patents (38.6\% of global total).
 \end{frame}
 
+%% --- Transition: Data Foundations to Product Development ---
+
+{
+\hdxpurplebg
+\begin{frame}{Section Summary: Data Foundations}
+    \centering
+    \vspace{5mm}
+
+    {\Large\bfseries What We've Learned}
+
+    \vspace{8mm}
+
+    \begin{minipage}{0.9\textwidth}
+        \begin{itemize}
+            \item GenAI is \textbf{trained}, not programmed---data quality determines output quality
+
+            \item Neural networks learn patterns humans haven't articulated, but inherit biases from training data and human evaluators
+
+            \item Data has a \textbf{shelf life}---currency matters as much as quality
+
+            \item Global privacy regulations (GDPR, PIPL, CCPA) create compliance obligations that AI doesn't eliminate
+        \end{itemize}
+    \end{minipage}
+
+    \vspace{8mm}
+
+    \textit{Next: How do we turn good data into successful AI products?}
+\end{frame}
+}
+
 %% ============================================================================
 %% SECTION 2: PRODUCT DEVELOPMENT
 %% ============================================================================
@@ -814,9 +983,13 @@
         \end{itemize}
     \end{minipage}
 
-    \vspace{8mm}
+    \vspace{5mm}
 
     GenAI has entered the ``Trough of Disillusionment''
+
+    \vspace{3mm}
+
+    {\tiny Sources: MIT (2025), Wavestone (2025), Gartner Hype Cycle}
 \end{frame}
 }
 
@@ -1082,9 +1255,9 @@
 
 \begin{frame}{ROI Reality (2025)}
     \begin{itemize}
-        \item Average ROI: \textbf{3.7x} per dollar (IDC/Microsoft)
+        \item Average ROI: \textbf{3.7x} per dollar invested
         \item Top performers: \textbf{\$10.3} return per dollar
-        \item 74\% meeting or exceeding expectations (Deloitte)
+        \item 74\% meeting or exceeding expectations
         \item \textbf{46\% have no structured ROI measurement}
     \end{itemize}
 
@@ -1096,6 +1269,10 @@
         \item Operational efficiency: 12--24 months
         \item Revenue generation: 18--36 months
     \end{itemize}
+
+    \vspace{2mm}
+
+    {\tiny Sources: IDC/Microsoft (2025), Deloitte (2025), Wavestone (2025)}
 \end{frame}
 
 \begin{frame}{Total Cost of Ownership}
