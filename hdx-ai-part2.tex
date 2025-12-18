@@ -47,20 +47,20 @@
 
             \vspace{4mm}
 
-            \textbf{Founder}, NERV Systems\\[1mm]
-            \includegraphics[height=0.7cm]{assets/logos/NERV Systems Logo BLK.png}
-
-            \vspace{2mm}
-
             \textbf{Joint PhD}, NUS \& King's College London\\[1mm]
-            \includegraphics[height=0.6cm]{assets/logos/National_University_of_Singapore-Logo.png}\hspace{2mm}%
-            \includegraphics[height=0.6cm]{assets/logos/KCL Logo.png}
+            \raisebox{-0.5\height}{\includegraphics[height=1.0cm]{assets/logos/National_University_of_Singapore-Logo.png}}\hspace{2mm}%
+            \raisebox{-0.5\height}{\includegraphics[height=0.6cm]{assets/logos/KCL Logo.png}}
 
-            \vspace{2mm}
+            \vspace{1mm}
 
             \textbf{Co-chair}, Emerging Technology \& Digital Leadership\\
             Golden Gate University\\[1mm]
-            \includegraphics[height=0.7cm]{assets/logos/GGU-Logo.png}
+            \includegraphics[height=0.9cm]{assets/logos/Golden Gate University Logo.png}
+
+            \vspace{1mm}
+
+            \textbf{Founder}, NERV Systems\\[1mm]
+            \includegraphics[height=0.7cm]{assets/logos/NERV Systems Logo BLK.png}
         \end{column}
     \end{columns}
 \end{frame}
@@ -793,37 +793,31 @@
 %% --- Coscientist case study ---
 
 \begin{frame}{Case Study: AI-Controlled Chemical Synthesis}
-    \textbf{Coscientist (Carnegie Mellon, 2023)}
+    \begin{columns}[c]
+        \begin{column}{0.38\textwidth}
+            \textbf{Coscientist (2023)}
 
-    \vspace{2mm}
+            \vspace{2mm}
 
-    Researchers built an autonomous AI agent that controls real laboratory equipment:
+            GPT-4 agent controlling real lab equipment:
+            \begin{itemize}
+                \item Internet search + code execution
+                \item Physical liquid handlers
+                \item Autonomous experiment design
+            \end{itemize}
 
-    \vspace{2mm}
+            \vspace{2mm}
 
-    \begin{itemize}
-        \item GPT-4 powered agent with access to internet search, documentation, code execution
-        \item Connected to physical lab automation (liquid handlers, synthesis equipment)
-        \item Given plain-language prompts, it designs, plans, and \textit{executes} experiments
-    \end{itemize}
+            \textbf{Risk}: Could synthesize controlled drugs and chemical weapons precursors.
 
-    \vspace{2mm}
+            \vspace{2mm}
 
-    \textbf{The problem}: When prompted, Coscientist could produce:
-    \begin{itemize}
-        \item Controlled drugs
-        \item Chemical weapons precursors
-    \end{itemize}
-
-    \vspace{2mm}
-
-    \begin{alertblock}{This is Real, Not Hypothetical}
-        An agentic AI connected to lab equipment can autonomously synthesize dangerous substances. The design-make-test cycle is no longer theoretical.
-    \end{alertblock}
-
-    \vspace{1mm}
-
-    {\tiny Source: Boiko et al., ``Autonomous chemical research with large language models,'' \textit{Nature} 624, 570--578 (2023)}
+            {\tiny Boiko et al., \textit{Nature} 624 (2023)}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \includegraphics[width=\textwidth]{assets/stock/coscientist-diagram.png}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 %% --- Defence in Depth introduction ---
@@ -1017,7 +1011,6 @@
 
         % LLM with internal guardrails indicator
         \node[draw=hdxblue, fill=hdxblue!60, minimum width=1.5cm, minimum height=2cm, rounded corners=3pt, font=\normalsize\bfseries] (llm) at (0,0) {LLM};
-        \node[font=\tiny\itshape, text=hdxblue!90, below=2pt of llm] {RLHF + System Prompt};
 
         % Multiple output guardrail layers
         \node[draw=hdxgreen!90, fill=hdxgreen!40, minimum width=1cm, minimum height=2cm, rounded corners=2pt] (o1) at (2.3,0) {};
@@ -1035,6 +1028,7 @@
 
         % Brace labels - positioned relative to boxes
         \draw[decorate, decoration={brace, amplitude=4pt, mirror}] (g1.south west) ++(0,-0.15) -- ++(2.7,0) node[midway, below=4pt, font=\small] {Input Layers};
+        \draw[decorate, decoration={brace, amplitude=4pt, mirror}] (llm.south west) ++(0,-0.15) -- ++(1.5,0) node[midway, below=14pt, font=\scriptsize] {RLHF + Sys Prompt};
         \draw[decorate, decoration={brace, amplitude=4pt, mirror}] (o1.south west) ++(0,-0.15) -- ++(2.7,0) node[midway, below=4pt, font=\small] {Output Layers};
     \end{tikzpicture}
 
@@ -1048,21 +1042,21 @@
 \begin{frame}{Why Multiple Layers Matter}
     \textbf{Each layer has different strengths and weaknesses:}
 
-    \vspace{3mm}
+    \vspace{2mm}
 
     \begin{tabular}{p{3cm}p{4.5cm}p{4.5cm}}
         \textbf{Layer} & \textbf{Catches} & \textbf{Misses} \\
         \hline
         Pattern matching & Known attack strings & Novel attacks, obfuscation \\
         Intent classifier & Malicious intent patterns & Sophisticated framing \\
-        LLM guardrails & Contextual threats & Jailbreaks (as you saw!) \\
+        LLM guardrails & Contextual threats & Jailbreaks \\
         Output filters & PII, toxicity & Subtle policy violations \\
     \end{tabular}
 
-    \vspace{4mm}
+    \vspace{2mm}
 
     \begin{alertblock}{The CTF Lesson}
-        You bypassed LLM guardrails in minutes. That's why we need layers \textit{before} and \textit{after} the model too.
+        Guardrails can be bypassed. Layers \textit{before} and \textit{after} the model add defence in depth.
     \end{alertblock}
 \end{frame}
 
