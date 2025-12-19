@@ -101,6 +101,15 @@
 
 \section{AI Ethics}
 
+%% --- UNESCO AI Ethics Forum opener ---
+
+\begin{frame}{Reflections on the UNESCO AI Ethics Forum}
+    \centering
+    \vfill
+    \includegraphics[width=0.95\textwidth,height=0.75\textheight,keepaspectratio]{assets/stock/unesco-ai-ethics-forum-2025.jpg}
+    \vfill
+\end{frame}
+
 %% --- Menti: Opening engagement ---
 
 \begin{frame}{Let's Start with a Question}
@@ -115,7 +124,7 @@
 
     \vspace{5mm}
 
-    {\Huge\textbf{[CODE]}}
+    {\Huge\textbf{23109953}}
 
     \vspace{8mm}
 
@@ -212,27 +221,26 @@
         \begin{column}{0.48\textwidth}
             \textbf{Wrong} (Ethics concern)
             \begin{itemize}
-                \item System works as designed
-                \item Violates rights or dignity
-                \item Governance problem
-                \item Fix: constrain purpose, redesign
+                \item Violates rights, dignity, autonomy
+                \item May not make anyone \textit{measurably} worse off
+                \item Fix: governance, policy, redesign
             \end{itemize}
         \end{column}
         \begin{column}{0.48\textwidth}
             \textbf{Harm} (Safety concern)
             \begin{itemize}
-                \item System malfunctions
-                \item Causes damage through failure
-                \item Engineering problem
-                \item Fix: better testing, monitoring
+                \item Makes someone \textit{less well off}
+                \item Measurable impact
+                \item Can occur even when working as designed
+                \item Fix: controls, testing, monitoring
             \end{itemize}
         \end{column}
     \end{columns}
 
-    \vspace{3mm}
+    \vspace{2mm}
 
     \begin{block}{Key Insight}
-        A system can be \textbf{safe} (doesn't malfunction) yet \textbf{unethical} (wrongs people by design).
+        Both can happen when systems work perfectly. The difference is whether someone ends up \textbf{worse off} (harm) or has their \textbf{rights violated} (wrong).
     \end{block}
 \end{frame}
 
@@ -277,13 +285,14 @@
     \vspace{3mm}
 
     \begin{tabular}{p{3cm}p{5cm}p{5cm}}
-        & \textbf{Safety Failure} & \textbf{Ethics Failure} \\
+        & \textbf{Harm (Safety)} & \textbf{Wrong (Ethics)} \\
         \hline
-        \textbf{Question} & Does it work? & Should it exist? \\
-        \textbf{Response} & Engineering fix & Governance intervention \\
+        \textbf{Question} & Is someone worse off? & Were rights violated? \\
+        \textbf{Nature} & Measurable, quantifiable & Categorical \\
+        \textbf{Response} & Risk controls, mitigation & Governance intervention \\
         \textbf{Expertise} & Technical teams & Cross-functional + legal \\
         \textbf{Risk profile} & Often insurable & Existential/reputational \\
-        \textbf{Public perception} & ``The system broke'' & ``They designed it this way'' \\
+        \textbf{Public perception} & ``Something caused damage'' & ``They chose to do this'' \\
     \end{tabular}
 
     \vspace{4mm}
@@ -352,7 +361,7 @@
 
     {\large Go to \textbf{menti.com} and enter the code:}
     \quad
-    {\Huge\textbf{[CODE]}}
+    {\Huge\textbf{23109953}}
 
     \vspace{5mm}
 
@@ -435,8 +444,63 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{Types of AI Bias: Understanding Wrongs}
-    \textbf{Bias represents a category of \textit{wrong}---the system uses characteristics against people.}
+%% --- Three Core Wrongs Framework ---
+
+\begin{frame}{AI Alignment: When Goals Diverge from Values}
+    \textbf{What is Alignment?}
+
+    \vspace{2mm}
+
+    An AI system is \textit{aligned} when it pursues goals consistent with human values and intentions.
+
+    \vspace{3mm}
+
+    \textbf{Misalignment is a Wrong Because:}
+    \begin{itemize}
+        \item The system acts \textit{against} the interests of those it serves
+        \item Even ``successful'' operation violates the implicit contract
+        \item Users are treated as means to ends they didn't choose
+    \end{itemize}
+
+    \vspace{2mm}
+
+    \begin{block}{Example}
+        A recommendation algorithm optimized for engagement that promotes outrage content. It's \textit{working perfectly}---but pursuing a goal misaligned with user wellbeing.
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Three Core Wrongs}
+    \textbf{A principled framework for AI ethics:}
+
+    \vspace{3mm}
+
+    \begin{enumerate}
+        \item \textbf{Misalignment}\\
+              AI pursuing goals inconsistent with human values\\
+              {\small\textit{``The system works against my interests''}}
+
+        \vspace{2mm}
+
+        \item \textbf{Unfairness}\\
+              Treating people differently based on protected characteristics\\
+              {\small\textit{``The system used my characteristics against me''}}
+
+        \vspace{2mm}
+
+        \item \textbf{Autonomy Violation}\\
+              Manipulating, deceiving, or undermining self-determination\\
+              {\small\textit{``The system didn't respect my agency''}}
+    \end{enumerate}
+
+    \vspace{2mm}
+
+    \begin{alertblock}{Each Maps to a Relationship Aspect}
+        Alignment (shared purpose), Fairness (equal treatment), Autonomy (respect for agency)
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Unfairness: Using Characteristics Against People}
+    \textbf{Bias is the mechanism; unfairness is the wrong.}
 
     \vspace{2mm}
 
@@ -455,7 +519,7 @@
     \end{alertblock}
 \end{frame}
 
-\begin{frame}{Bias Mitigation: Preventing Wrongs}
+\begin{frame}{Mitigating Unfairness}
     \hdxtwocolumn{
         \textbf{Detection}
         \begin{itemize}
@@ -474,30 +538,150 @@
         \end{itemize}
     }
 
-    \vspace{2mm}
-
     \begin{block}{Ethics Governance}
-        Bias mitigation is part of the \textbf{ethics track}---preventing wrongs even when systems technically ``work.''
+        Bias mitigation is part of the \textbf{ethics track}---preventing wrongs even when systems ``work.''
     \end{block}
 \end{frame}
 
-\begin{frame}{Transparency \& Explainability: Respecting Autonomy}
-    \textbf{Opacity can be a \textit{wrong}---it denies people the ability to understand decisions affecting them.}
+%% --- Autonomy Violation: Third Core Wrong ---
+
+\begin{frame}{Autonomy Violation: Undermining Self-Determination}
+    \textbf{AI can violate autonomy in distinct ways:}
 
     \vspace{2mm}
 
-    \textbf{Different stakeholders need different explanations:}
     \begin{itemize}
-        \item \textbf{End Users}: ``Why this output for me?''
-        \item \textbf{Operators}: ``Why is the system behaving this way?''
-        \item \textbf{Regulators}: ``How does the system make decisions?''
-        \item \textbf{Affected Parties}: ``What can I do to change the outcome?''
-        \item \textbf{Executives}: ``What are the risks of this system?''
+        \item \textbf{Manipulation}: Nudging users toward decisions without awareness\\
+              {\small Dark patterns, algorithmic persuasion, exploiting psychological biases}
+
+        \item \textbf{Deception}: Misrepresenting AI capabilities or nature\\
+              {\small Making people think they're talking to a human, hiding AI involvement}
+
+        \item \textbf{Coercion}: Removing meaningful choice\\
+              {\small Algorithmic gatekeeping, ``take it or leave it'' AI decisions}
+
+        \item \textbf{Surveillance}: Monitoring that chills autonomous behavior\\
+              {\small Even when data isn't ``used against'' someone, awareness changes behavior}
     \end{itemize}
 
     \vspace{2mm}
 
-    {\small Lack of transparency can wrong people by denying their right to understand and contest decisions that affect their lives.}
+    \begin{alertblock}{Distinct from Unfairness}
+        A system can be perfectly unbiased yet still manipulate users into purchases they wouldn't otherwise make. That's an autonomy violation.
+    \end{alertblock}
+\end{frame}
+
+%% --- Applied Wrongs: Workforce Displacement and Deepfakes ---
+
+\begin{frame}{Workforce Displacement: Wrong, Harm, or Both?}
+    \textbf{Automation that displaces jobs isn't automatically wrong---but \textit{how} it happens can be.}
+
+    \vspace{2mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{The Harm}
+            \begin{itemize}
+                \item Economic damage (lost income)
+                \item Career disruption
+                \item Community impacts
+                \item Mental health effects
+            \end{itemize}
+
+            \vspace{2mm}
+
+            {\small These are \textit{consequences}---people lose jobs for legitimate reasons.}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{The Wrong}
+            \begin{itemize}
+                \item Training AI on workers' expertise without consent
+                \item Targeting roles held by specific demographics
+                \item No notice or transition support
+                \item Treating people as disposable means
+            \end{itemize}
+
+            \vspace{2mm}
+
+            {\small These violate dignity, autonomy, or fairness.}
+        \end{column}
+    \end{columns}
+
+    \vspace{2mm}
+
+    \begin{alertblock}{Governance Response}
+        Harm requires \textit{mitigation} (severance, retraining). Wrong requires \textit{redesign} (consent, fairness review, transition planning).
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Deepfakes: Primarily a Wrong}
+    \textbf{Non-consensual use of identity is a wrong---even if no one ever sees it.}
+
+    \vspace{2mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{The Wrongs}
+            \begin{itemize}
+                \item Using likeness without consent\\{\small Violates autonomy}
+                \item NCII (intimate imagery)\\{\small Severe dignity violation}
+                \item Making someone ``say'' things\\{\small Identity appropriation}
+                \item Impersonation for fraud\\{\small Deception}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{The Harms}
+            \begin{itemize}
+                \item Reputational damage
+                \item Financial fraud losses
+                \item Misinformation spread
+                \item Psychological trauma
+            \end{itemize}
+
+            \vspace{2mm}
+
+            {\small Harms are additional consequences of the underlying wrong.}
+        \end{column}
+    \end{columns}
+
+    \vspace{2mm}
+
+    \begin{block}{Key Insight}
+        A deepfake wrongs someone \textit{even if never distributed}. The wrong is in the non-consensual use of their identity---analogous to the hiring algorithm using data without consent.
+    \end{block}
+\end{frame}
+
+%% --- Transparency as Ancillary ---
+
+\begin{frame}{Transparency: The Ancillary Concern}
+    \textbf{Transparency is not a wrong itself---it's how we detect and verify the three core wrongs.}
+
+    \vspace{3mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{What Transparency Enables:}
+            \begin{itemize}
+                \item Detect \textbf{misalignment}\\{\small Is the system pursuing the right goals?}
+                \item Detect \textbf{unfairness}\\{\small Is the system biased against groups?}
+                \item Detect \textbf{autonomy violations}\\{\small Is the system manipulating users?}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Why It's Ancillary:}
+            \begin{itemize}
+                \item A transparent wrong is still a wrong
+                \item Opacity \textit{enables} wrongs but isn't the wrong itself
+                \item Focus: Can we verify ethical operation?
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \vspace{2mm}
+
+    \begin{block}{Practical Implication}
+        Build transparency to \textit{detect} wrongs, not as an end in itself. The goal is verifiable ethical operation.
+    \end{block}
 \end{frame}
 
 \begin{frame}{Regulatory Explainability Requirements}
@@ -594,7 +778,7 @@
 
     {\large Go to \textbf{menti.com} and enter the code:}
     \quad
-    {\Huge\textbf{[CODE]}}
+    {\Huge\textbf{23109953}}
 
     \vspace{4mm}
 
@@ -796,25 +980,6 @@
 
 %% --- Demo: AI-controlled drone ---
 
-\begin{frame}{Human Oversight: Preventing Wrongs and Harms}
-    \begin{enumerate}
-        \item \textbf{Human-in-the-Loop (HITL)} --- Human approves every decision\\
-              \textit{High control, low throughput}
-
-        \item \textbf{Human-on-the-Loop (HOTL)} --- Human monitors, intervenes on exceptions\\
-              \textit{Lower control, high throughput}
-
-        \item \textbf{Human-out-of-Loop} --- Fully automated with auditing
-    \end{enumerate}
-
-    \vspace{3mm}
-
-    \begin{block}{Two Questions}
-        Could this decision \textbf{wrong} someone?\\
-        Could this decision \textbf{harm} someone?
-    \end{block}
-\end{frame}
-
 \begin{frame}{Demo: AI Flying a Drone}
     \centering
     \vspace{2mm}
@@ -824,20 +989,6 @@
     \vspace{4mm}
 
     {\large NERVA-UAS: An LLM-controlled autonomous drone system}
-\end{frame}
-
-\begin{frame}{NERVA-UAS: AI Meets OT Safety}
-    \textbf{Safety Architecture:}
-    \begin{itemize}
-        \item \textbf{Human-on-the-Loop (HOTL)}: Operator monitors AI decisions continuously
-        \item \textbf{Human-in-the-Loop (HITL)}: Override for any deviation from safety parameters
-    \end{itemize}
-
-    \vspace{4mm}
-
-    \begin{alertblock}{OT Safety in Practice}
-        If the AI hallucinates or malfunctions, real physical harm can result. This is not metaphorical---AI controlling physical systems \textit{is} OT safety.
-    \end{alertblock}
 \end{frame}
 
 %% --- Coscientist case study ---
@@ -868,6 +1019,48 @@
             \includegraphics[width=\textwidth]{assets/stock/coscientist-diagram.png}
         \end{column}
     \end{columns}
+\end{frame}
+
+%% --- Human Oversight (merged slide) ---
+
+\begin{frame}{Human Oversight: Preventing Wrongs and Harms}
+    \begin{columns}[t]
+        \begin{column}{0.55\textwidth}
+            \textbf{Oversight Models:}
+            \begin{enumerate}
+                \item \textbf{Human-in-the-Loop (HITL)}\\
+                      Human approves every decision\\
+                      {\small\textit{High control, low throughput}}
+
+                \item \textbf{Human-on-the-Loop (HOTL)}\\
+                      Human monitors, intervenes on exceptions\\
+                      {\small\textit{Lower control, high throughput}}
+
+                \item \textbf{Human-out-of-Loop}\\
+                      Fully automated with auditing
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \textbf{NERVA-UAS Example:}
+            \begin{itemize}
+                \item HOTL: Operator monitors continuously
+                \item HITL: Override for safety deviations
+            \end{itemize}
+
+            \vspace{2mm}
+
+            \begin{block}{Two Questions}
+                Could this \textbf{wrong} someone?\\
+                Could this \textbf{harm} someone?
+            \end{block}
+        \end{column}
+    \end{columns}
+
+    \vspace{2mm}
+
+    \begin{alertblock}{OT Safety in Practice}
+        If AI hallucinates or malfunctions, real physical harm results. AI controlling physical systems \textit{is} OT safety.
+    \end{alertblock}
 \end{frame}
 
 \begin{frame}{AI Safety Index 2024: Vendor Practices}
@@ -1013,50 +1206,24 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}{Two Types of Guardrails}
-    \begin{columns}[t]
-        \begin{column}{0.48\textwidth}
-            \textbf{Safety Guardrails}\\
-            {\small Prevent \textit{harms} from system failures}
+\begin{frame}{Why Multiple Layers Matter}
+    \textbf{Each layer has different strengths and weaknesses:}
 
-            \vspace{3mm}
+    \vspace{2mm}
 
-            \begin{itemize}
-                \item Block dangerous instructions
-                \item Prevent hallucinated medical/legal advice
-                \item Enforce operational limits
-                \item Rate limiting and circuit breakers
-                \item Detect anomalous behavior
-            \end{itemize}
+    \begin{tabular}{p{3cm}p{4.5cm}p{4.5cm}}
+        \textbf{Layer} & \textbf{Catches} & \textbf{Misses} \\
+        \hline
+        Pattern matching & Known attack strings & Novel attacks, obfuscation \\
+        Intent classifier & Malicious intent patterns & Sophisticated framing \\
+        LLM guardrails & Contextual threats & Jailbreaks \\
+        Output filters & PII, toxicity & Subtle policy violations \\
+    \end{tabular}
 
-            \vspace{2mm}
+    \vspace{2mm}
 
-            \textit{Question}: What if this system malfunctions?
-        \end{column}
-        \begin{column}{0.48\textwidth}
-            \textbf{Ethical Guardrails}\\
-            {\small Prevent \textit{wrongs} even when working correctly}
-
-            \vspace{3mm}
-
-            \begin{itemize}
-                \item Block discriminatory outputs
-                \item Enforce fairness constraints
-                \item Prevent unauthorized data use
-                \item Protect user autonomy
-                \item Ensure transparency requirements
-            \end{itemize}
-
-            \vspace{2mm}
-
-            \textit{Question}: What if this system succeeds?
-        \end{column}
-    \end{columns}
-
-    \vspace{3mm}
-
-    \begin{alertblock}{Both Are Necessary}
-        A system can pass all safety guardrails while still wronging users by design.
+    \begin{alertblock}{The CTF Lesson}
+        Guardrails can be bypassed. Layers \textit{before} and \textit{after} the model add defence in depth.
     \end{alertblock}
 \end{frame}
 
@@ -1115,24 +1282,50 @@
     \end{block}
 \end{frame}
 
-\begin{frame}{Why Multiple Layers Matter}
-    \textbf{Each layer has different strengths and weaknesses:}
+\begin{frame}{Two Types of Guardrails}
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Safety Guardrails}\\
+            {\small Prevent \textit{harms} from system failures}
 
-    \vspace{2mm}
+            \vspace{3mm}
 
-    \begin{tabular}{p{3cm}p{4.5cm}p{4.5cm}}
-        \textbf{Layer} & \textbf{Catches} & \textbf{Misses} \\
-        \hline
-        Pattern matching & Known attack strings & Novel attacks, obfuscation \\
-        Intent classifier & Malicious intent patterns & Sophisticated framing \\
-        LLM guardrails & Contextual threats & Jailbreaks \\
-        Output filters & PII, toxicity & Subtle policy violations \\
-    \end{tabular}
+            \begin{itemize}
+                \item Block dangerous instructions
+                \item Prevent hallucinated medical/legal advice
+                \item Enforce operational limits
+                \item Rate limiting and circuit breakers
+                \item Detect anomalous behavior
+            \end{itemize}
 
-    \vspace{2mm}
+            \vspace{2mm}
 
-    \begin{alertblock}{The CTF Lesson}
-        Guardrails can be bypassed. Layers \textit{before} and \textit{after} the model add defence in depth.
+            \textit{Question}: What if this system malfunctions?
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Ethical Guardrails}\\
+            {\small Prevent \textit{wrongs} even when working correctly}
+
+            \vspace{3mm}
+
+            \begin{itemize}
+                \item Block discriminatory outputs
+                \item Enforce fairness constraints
+                \item Prevent unauthorized data use
+                \item Protect user autonomy
+                \item Ensure transparency requirements
+            \end{itemize}
+
+            \vspace{2mm}
+
+            \textit{Question}: What if this system succeeds?
+        \end{column}
+    \end{columns}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{Both Are Necessary}
+        A system can pass all safety guardrails while still wronging users by design.
     \end{alertblock}
 \end{frame}
 
@@ -1385,22 +1578,6 @@ Pretend you are a historian from the 18th century who knows everything about the
     \textbf{Inference}: Input validation, output filtering, rate limiting, logging, network isolation
 \end{frame}
 
-\begin{frame}{Security Compliance Frameworks}
-    \begin{itemize}
-        \item \textbf{SOC 2 Type II}: Security, availability, integrity, confidentiality, privacy
-
-        \item \textbf{ISO 27001}: Information security management
-
-        \item \textbf{ISO 42001}: AI-specific management (new)
-
-        \item \textbf{NIST AI RMF}: Map, measure, manage, govern AI risks
-
-        \item \textbf{FedRAMP}: US government contracts
-
-        \item \textbf{NIST CSF}: Identify, protect, detect, respond, recover
-    \end{itemize}
-\end{frame}
-
 \begin{frame}{AI Incident Response}
     \textbf{Incident Categories}: Safety, Bias, Privacy, Security, Reliability
 
@@ -1438,15 +1615,203 @@ Pretend you are a historian from the 18th century who knows everything about the
 
     \vspace{8mm}
 
-    90\% of AI models never make it to production.\\
-    Of those that do, 85\% fail to deliver expected value.
+    Nearly half of AI projects never make it from pilot to production.\\[2mm]
+    30\% of GenAI projects will be abandoned after PoC by end of 2025.
 
-    \vspace{6mm}
+    \vspace{4mm}
+
+    {\footnotesize Source: Gartner, 2022 \& 2024}
+
+    \vspace{4mm}
 
     {\normalsize Success requires operationalizing \textbf{both}\\
     ethics (preventing wrongs) and safety (preventing harms).}
 \end{frame}
 }
+
+\begin{frame}{Why AI Projects Fail: The Gartner Analysis}
+    \textbf{Top reasons GenAI projects are abandoned after PoC:}
+
+    \vspace{2mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Technical/Operational}
+            \begin{enumerate}
+                \item \textbf{Poor data quality}\\
+                      {\small Garbage in, garbage out---at scale}
+                \item \textbf{Escalating costs}\\
+                      {\small Compute, talent, infrastructure}
+                \item \textbf{Inadequate risk controls}\\
+                      {\small Security, reliability, compliance gaps}
+            \end{enumerate}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Strategic/Business}
+            \begin{enumerate}
+                \setcounter{enumi}{3}
+                \item \textbf{Unclear business value}\\
+                      {\small ``Cool demo'' $\neq$ ROI}
+                \item \textbf{PoC-to-production gap}\\
+                      {\small Demo works; production stalls}
+                \item \textbf{Organizational readiness}\\
+                      {\small Change management, skills gaps}
+            \end{enumerate}
+        \end{column}
+    \end{columns}
+
+    \vspace{2mm}
+
+    \begin{block}{What's Missing From This Analysis?}
+        These statistics measure \textit{technical and business} failures. They don't capture \textbf{ethical failures}---projects that ``succeeded'' but wronged users.
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Hidden Failures: Ethics Edition}
+    \textbf{A project can ``succeed'' by every business metric while still failing ethically.}
+
+    \vspace{3mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Counted as ``Successes''}
+            \begin{itemize}
+                \item Deployed to production
+                \item Met performance targets
+                \item Delivered cost savings
+                \item High user adoption
+                \item Positive ROI
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Ethical Failures Ignored}
+            \begin{itemize}
+                \item Biased outcomes for minorities
+                \item Privacy violations
+                \item Manipulative design patterns
+                \item Workforce displacement without transition
+                \item Opacity in high-stakes decisions
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \vspace{3mm}
+
+    \begin{alertblock}{The Real Risk}
+        Ethical failures often surface \textit{after} deployment---as lawsuits, regulatory action, or reputational crises. By then, the ``successful'' project has become a liability.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Case Study: Air Canada Chatbot (2024)}
+    \textbf{A ``successful'' deployment that became a legal precedent.}
+
+    \vspace{2mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.55\textwidth}
+            \textbf{What Happened:}
+            \begin{itemize}
+                \item Chatbot told customer he could book full-fare ticket and apply for bereavement discount later
+                \item This was \textit{false}---policy required pre-approval
+                \item Customer relied on chatbot, paid full fare
+                \item Air Canada argued chatbot was ``separate entity''
+            \end{itemize}
+
+            \vspace{2mm}
+
+            \textbf{Tribunal Ruling:}\\
+            Company liable for AI-generated advice. ``Air Canada did not explain why customers should trust information on one part of its website over another.''
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \textbf{Failure Analysis:}
+
+            \vspace{2mm}
+
+            \textit{Technical success?}\\
+            {\small Yes---chatbot was responsive, available 24/7}
+
+            \vspace{2mm}
+
+            \textit{Business success?}\\
+            {\small Reduced call center load}
+
+            \vspace{2mm}
+
+            \textit{Ethical failure?}\\
+            {\small Hallucination $\rightarrow$ \textbf{Harm}}\\
+            {\small No human oversight $\rightarrow$ \textbf{Wrong}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Preventing Both Failure Types}
+    \textbf{Successful AI deployment requires addressing technical \textit{and} ethical risks:}
+
+    \vspace{2mm}
+
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Prevent Technical Failures}
+            \begin{itemize}
+                \item Data quality assessment before PoC
+                \item Production requirements in pilot criteria
+                \item Realistic cost modeling (3-5x PoC)
+                \item Monitoring and observability from day one
+                \item Clear success metrics tied to business value
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Prevent Ethical Failures}
+            \begin{itemize}
+                \item Bias testing across demographic groups
+                \item Human oversight for high-stakes decisions
+                \item Transparency about AI involvement
+                \item Privacy impact assessments
+                \item Stakeholder input (including affected parties)
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
+    \vspace{2mm}
+
+    \begin{block}{Integration Point}
+        Build ethics review into your deployment pipeline---not as a gate at the end, but as continuous validation throughout development.
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Deployment Checklist}
+    \textbf{Before going to production, verify:}
+
+    \vspace{2mm}
+
+    \hdxtwocolumn{
+        \textbf{Safety (Preventing Harms)}
+        \begin{itemize}
+            \item[$\square$] Performance benchmarks met
+            \item[$\square$] Edge cases tested
+            \item[$\square$] Failure modes documented
+            \item[$\square$] Monitoring configured
+            \item[$\square$] Rollback plan ready
+            \item[$\square$] Incident response defined
+        \end{itemize}
+    }{
+        \textbf{Ethics (Preventing Wrongs)}
+        \begin{itemize}
+            \item[$\square$] Bias audit completed
+            \item[$\square$] Human oversight appropriate
+            \item[$\square$] Transparency requirements met
+            \item[$\square$] Data usage authorized
+            \item[$\square$] Affected parties considered
+            \item[$\square$] Governance sign-off obtained
+        \end{itemize}
+    }
+
+    \vspace{2mm}
+
+    \begin{alertblock}{Both Columns Required}
+        Checking only one column means you're either building something that will break (safety) or something that shouldn't exist (ethics).
+    \end{alertblock}
+\end{frame}
 
 \begin{frame}{Implementation Patterns}
     \begin{enumerate}
@@ -1558,6 +1923,111 @@ Pretend you are a historian from the 18th century who knows everything about the
     \begin{block}{Production Checklist Addition}
         Add to your monitoring: ``Are we wronging anyone?'' not just ``Is it working?''
     \end{block}
+\end{frame}
+
+%% --- Testing Methodologies ---
+
+\begin{frame}{Testing for Wrongs: Ethics Testing}
+    \textbf{Before deployment: Can we verify the system won't wrong anyone?}
+
+    \vspace{2mm}
+
+    \textbf{Bias \& Fairness Testing:}
+    \begin{itemize}
+        \item \textbf{Demographic parity}: Equal positive outcome rates across groups
+        \item \textbf{Equalized odds}: Equal error rates across groups
+        \item \textbf{Counterfactual}: Would outcome change if protected attribute changed?
+        \item \textbf{Intersectional}: Test combinations (e.g., race $\times$ gender)
+    \end{itemize}
+
+    \vspace{2mm}
+
+    \textbf{Consent \& Autonomy Testing:}
+    \begin{itemize}
+        \item \textbf{Data lineage audit}: Can you trace all training data to consent?
+        \item \textbf{Transparency testing}: Can affected parties understand decisions?
+        \item \textbf{Opt-out verification}: Do user controls actually work?
+    \end{itemize}
+
+    \vspace{2mm}
+
+    \begin{block}{Key Question}
+        ``If this system works perfectly, will it wrong anyone?''
+    \end{block}
+\end{frame}
+
+\begin{frame}{Testing for Harms: Safety Testing}
+    \textbf{Before and during deployment: What happens when the system fails?}
+
+    \vspace{2mm}
+
+    \textbf{Red Teaming:}
+    \begin{itemize}
+        \item Adversarial prompts (jailbreaks, injections)
+        \item Edge case stress testing
+        \item Failure mode enumeration
+    \end{itemize}
+
+    \vspace{2mm}
+
+    \textbf{Reliability Testing:}
+    \begin{itemize}
+        \item Hallucination benchmarks (factuality scoring)
+        \item Consistency testing (same input $\rightarrow$ same output?)
+        \item Degradation testing (performance under load)
+    \end{itemize}
+
+    \vspace{2mm}
+
+    \textbf{Safety Boundary Testing:}
+    \begin{itemize}
+        \item Dangerous output detection rates
+        \item Kill switch response time
+        \item Rollback verification
+    \end{itemize}
+
+    \vspace{2mm}
+
+    \begin{block}{Key Question}
+        ``What happens when this system malfunctions?''
+    \end{block}
+\end{frame}
+
+\begin{frame}{Dual-Track Testing Pipeline}
+    \centering
+
+    \begin{tikzpicture}[scale=0.7, every node/.style={font=\small}]
+        \definecolor{hdxpurple}{RGB}{102,51,153}
+        \definecolor{hdxgreen}{RGB}{107,142,35}
+        \definecolor{hdxblue}{RGB}{135,170,200}
+
+        % Pre-deployment gates
+        \node[draw=hdxpurple, fill=hdxpurple!20, minimum width=3cm, minimum height=1.8cm, rounded corners=3pt, align=center] (ethics) at (-3,2) {\textbf{Ethics Gate}\\{\scriptsize Bias audit}\\{\scriptsize Consent check}\\{\scriptsize Fairness tests}};
+        \node[draw=hdxgreen, fill=hdxgreen!20, minimum width=3cm, minimum height=1.8cm, rounded corners=3pt, align=center] (safety) at (3,2) {\textbf{Safety Gate}\\{\scriptsize Red team}\\{\scriptsize Stress test}\\{\scriptsize Failure modes}};
+
+        % Deployment
+        \node[draw=hdxblue, fill=hdxblue!40, minimum width=2.5cm, minimum height=1cm, rounded corners=3pt, font=\bfseries] (deploy) at (0,0) {DEPLOYMENT};
+
+        % Post-deployment monitors
+        \node[draw=hdxpurple, fill=hdxpurple!20, minimum width=3cm, minimum height=1.2cm, rounded corners=3pt, align=center] (ethmon) at (-3,-2) {\textbf{Ethics Monitor}\\{\scriptsize Scheduled audits}};
+        \node[draw=hdxgreen, fill=hdxgreen!20, minimum width=3cm, minimum height=1.2cm, rounded corners=3pt, align=center] (safemon) at (3,-2) {\textbf{Safety Monitor}\\{\scriptsize Real-time alerts}};
+
+        % Arrows
+        \draw[->, thick] (ethics.south) -- (-1.5,0.5) -- (deploy.north west);
+        \draw[->, thick] (safety.south) -- (1.5,0.5) -- (deploy.north east);
+        \draw[->, thick] (deploy.south west) -- (-1.5,-0.5) -- (ethmon.north);
+        \draw[->, thick] (deploy.south east) -- (1.5,-0.5) -- (safemon.north);
+
+        % Labels
+        \node[font=\scriptsize, text=gray] at (0,3) {Pre-deployment};
+        \node[font=\scriptsize, text=gray] at (0,-3) {Post-deployment};
+    \end{tikzpicture}
+
+    \vspace{2mm}
+
+    \begin{alertblock}{Both Gates Must Pass}
+        A system can pass all safety tests while systematically wronging users. Neither gate substitutes for the other.
+    \end{alertblock}
 \end{frame}
 
 \begin{frame}{Model Drift: When Good Systems Go Bad}
@@ -1785,7 +2255,7 @@ Pretend you are a historian from the 18th century who knows everything about the
 
     \vspace{5mm}
 
-    {\Huge\textbf{[CODE]}}
+    {\Huge\textbf{23109953}}
 
     \vspace{8mm}
 
@@ -1821,6 +2291,24 @@ Pretend you are a historian from the 18th century who knows everything about the
     {\normalsize Reference slides for further discussion}
 \end{frame}
 }
+
+%% --- Security Reference ---
+
+\begin{frame}{Security Compliance Frameworks}
+    \begin{itemize}
+        \item \textbf{SOC 2 Type II}: Security, availability, integrity, confidentiality, privacy
+
+        \item \textbf{ISO 27001}: Information security management
+
+        \item \textbf{ISO 42001}: AI-specific management (new)
+
+        \item \textbf{NIST AI RMF}: Map, measure, manage, govern AI risks
+
+        \item \textbf{FedRAMP}: US government contracts
+
+        \item \textbf{NIST CSF}: Identify, protect, detect, respond, recover
+    \end{itemize}
+\end{frame}
 
 %% --- Strategic Considerations ---
 
